@@ -63,31 +63,26 @@ public class Tugas1 {
     }
     
     public static void main(String[] args) {
-        System.out.print("Soal 1 result -> ");
         Soal1 soal1 = new Soal1();
         soal1.print();
-        
+
         System.out.println("================================");
         
-        System.out.print("Soal 2 result -> ");
         Soal2 soal2 = new Soal2();
         soal2.print();
         
         System.out.println("================================");
         
-        System.out.print("Soal 3 result -> ");
         Soal3 soal3 = new Soal3();
         soal3.print();
-        
+
         System.out.println("================================");
-        
-        System.out.print("Soal 4 result -> ");
+
         Soal4 soal4 = new Soal4();
         soal4.print();
-        
+
         System.out.println("================================");
-        
-        System.out.print("Soal 5 result -> ");
+
         Soal5 soal5 = new Soal5();
         soal5.print();
 
