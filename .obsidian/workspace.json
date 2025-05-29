@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "af377da1a65d20f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbb25ed876265d03",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "863506fae983c36a",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "struktur-data/proses2_2.canvas",
+                "viewState": {
+                  "x": -190,
+                  "y": -50,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "proses2_2"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a161d2ce4af32943",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4ca925493b33aa1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af34316198b05121",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "809f236e0ac0773a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ffcb10cadc2e3e10",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1e7a9a01ce6bdc8a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c8142cc1c97e0c70",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf77150224b3f853",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "struktur-data/proses2_2.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for proses2_2"
+            }
+          },
+          {
+            "id": "3efd86b434eacdf2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "struktur-data/proses2_2.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from proses2_2"
+            }
+          },
+          {
+            "id": "b0294c7713f4614d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "45ac0cb0445ec483",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "struktur-data/proses2_2.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of proses2_2"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "863506fae983c36a",
+  "lastOpenFiles": [
+    "assets/WhatsApp Image 2025-05-29 at 9.31.11 PM.jpeg",
+    "assets/WhatsApp Image 2025-05-29 at 9.31.10 PM.jpeg",
+    "assets/WhatsApp Unknown 2025-05-29 at 9.31.31 PM/WhatsApp Image 2025-05-29 at 9.31.11 PM.jpeg",
+    "assets/WhatsApp Unknown 2025-05-29 at 9.31.31 PM/WhatsApp Image 2025-05-29 at 9.31.10 PM.jpeg",
+    "assets/WhatsApp Unknown 2025-05-29 at 9.31.31 PM",
+    "assets/WhatsApp Unknown 2025-05-29 at 9.31.31 PM.zip",
+    "assets/Unconfirmed 393545.crdownload",
+    "struktur-data/proses2_2.png",
+    "struktur-data/image.png",
+    "assets/proses2_2.png",
+    "assets/image.png",
+    "struktur-data/proses2.canvas",
+    "struktur-data/proses2_2.canvas",
+    "assets/result2_1.png",
+    "assets/proses2_1.png",
+    "struktur-data/proses2_1.png",
+    "struktur-data/proses1.canvas",
+    "struktur-data/Tugas7.md"
+  ]
+}
