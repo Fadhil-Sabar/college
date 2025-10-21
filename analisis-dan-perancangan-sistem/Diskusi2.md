@@ -26,6 +26,8 @@ Salah satu faktor yang paling utama dalam analisis ini adalah memastikan keakrab
 
 Kemudian dalam menganalisis teknis, diperlukan juga keakraban dengan teknologi yang menjadi faktor penentu resiko teknis penting lainnya. Jika teknologi yang digunakan belum pernah ada sebelumnya, akan ada kemungkinan masalah dan keterlambatan karena diperlukan waktu lebih untuk menyelesaikan proyek tersebut. Sebagai contoh penggunaan teknologi baru seperti bahasa pemrograman baru, atau tech stack baru bisa meningkatkan resiko dalam pengembangan.
 
+Sebagai contoh untuk adopsi teknologi baru seperti React Native diperlukan pembelajaran lagi dari segi bahasa pemrograman Javascript, atau Svelte perlu pembiasaan dengan framework dan istilah-istilah yang ada di dalamnya, atau mungkin bahasa seperti Rust yang perlu belajar lagi terkait bahasa pemrogramannya karena terbilang baru dan sedikit berbeda dari high-level programming language lainnya.
+
 Menentukan ukuran dalam sebuah proyek juga merupakan pertimbangan penting, seperti banyak jumlah orang dalam tim pengembang, lama waktu yang dibutuhkan untuk pengembangan, atau jumlah fitur yang akan dikembangkan. Semakin besar sebuah proyek, semakin rumit juga untuk dikelola dan berpeluang lebih besar untuk fitur-fitur yang penting menjadi terabaikan. Masalah seperti sistem yang terlalu kompleks karena harus banyak diintegrasikan, menjadi salah satu tantangan dalam analisis teknis.
 
 Solusinya adalah dengan mempertimbangkan kompatibiitas sistem baru dengan teknologi yang sudah ada. Karena pada dasarnya, sebuah sistem dalam organisasi yang dibangun, berdasarkan sistem lainnya yang sudah ada. Sebagai contoh sistem CRM atau Customer Relationship Management yang baru bisa punya nilai kecil jika tidak menggunakan data dari aplikasi yang sudah ada di organisasi tersebut.
@@ -39,3 +41,6 @@ Sehingga, dapat saya simpulkan jika analisis teknis ini sangat penting dilakukan
 Sumber referensi:
 - Azzahra, Z. F., & Anggoro, A. D. (2022). Analisis teknik entity-relationship diagram dalam perancangan database sebuah literature review. Intech, 3(1), 8-11.
 - BMP MSIM4302 Modul 2 Perencanaan Sistem, halaman 2.8
+- https://en.wikipedia.org/wiki/Rust_(programming_language)
+- https://en.wikipedia.org/wiki/Svelte
+- https://en.wikipedia.org/wiki/React_Native
