@@ -1,0 +1,183 @@
+<!DOCTYPE html><html><head>
+      <title>Tugas1</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/diru/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.19/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h5 id="pertanyaan">PERTANYAAN </h5>
+<blockquote>
+<p>Carilah contoh praktik baik wirausahawan yang sukses mengelola bisnisnya karena berhasil menerapkan “KONSEP EFFECTUATION. Anda diminta untuk memahami effectuation dan menganalisa jenis effectuation mana saja yang diterapkan oleh seorang wirausaha dan sampai sejauh mana tingkat kepentingannya?&nbsp;Berikan penjelasan Anda berdasarkan materi yang telah dibahas di BMP Modul 3 dan ditambahkan dengan sumber referensi lain baik buku, liputan media cetak/digital, jurnal, dan lain-lain. Sampaikan jawaban Anda dalam ulasan&nbsp;250 hingga 400 kata.</p>
+</blockquote>
+<p>Prinsip <em>Effectuation</em> atau efektuasi adalah cara berpikir dan bertindak yang digunakan oleh seorang wirausaha ketika mengambil keputusan dalam kondisi yang penuh ketidakpastian.</p>
+<p>Ada 5 jenis kategori dalam prinsip efektuasi ini.</p>
+<ol>
+<li>
+<p>Bird in Hand.<br>
+Bird in hand berarti mengenali pertanyaan2 apa yang ada dalam latar belakang diri kita seperti "siapa diri saya", "apa yang bisa saya lakukan", "siapa saja yang saya kenal", "passion saya apa", "saya lulusan apa", "hobi saya apa" dan segala hal tentang diri kita.</p>
+<p>Pertanyaan-pertanyaan tersebut bisa menjadi awal permulaan sebagai seorang wirausahawan. Dalam prinsip ini menjelaskan tentang modal awal yang kita miliki, bisa dimulai dari hal hal kecil yang ada di diri kita.</p>
+</li>
+<li>
+<p>Affordable Loss.<br>
+AFfordable loss, berarti kesiapan kita sebagai wirausaha menyadari soal resiko yang ada dari bisnis kita seperti resiko finansial, resiko tenaga, resiko fungsional dan resiko psikologis. Karena dalam melakukan usahanya, entah ketika baru ingin mulai, ingin mengembangkan bisnisnya, memperluas bisnisnya akan selalu ada resiko.</p>
+<p>Sehingga kita harus menentukan berapa persen tingkat kerugian yang bisa kita toleransi ketika mengelola usaha, namun harus dipastikan nilainya tidak dengan seluruh jmodal kita. Prinsip ini bertujuan agar kita siap menghadapi kerugian sebagaimana terdapat keuntungan.</p>
+</li>
+<li>
+<p>Lemonade.<br>
+Lemonade berasal dari ungkapan warga Amerika "When life gives you lemon, make lemonade", artinya adalah ketika hidup kita seperti lemon yang bisa berarti asam atau tidak enak seperti kehidupan. Wirausaha harus bisa memiliki kreativitas untuk mengubah hal yang tidak menyenangkan menjadi hal yang menarik.</p>
+<p>Prinsip ini bertujuan agar setiap wirausaha mampu menghadapi situasi yang tidak terduga, dan memanfaatkan situasi itu menjadi sesuatu yang bermanfaat dan menjadi peluang.</p>
+</li>
+<li>
+<p>Crazy quilt.<br>
+Merupakan kemampuan dari sseoarang wirausaha dalam membangun relasi dengan pihak pihak lain dan menggabungkan semuanya menjadi satu usaha yang bermanfaat. Dalam contohnya, crazy quilt berarti mengajak relasi dan menjalin komitmen yang saling menguntungkan dalam bisnis. Sehingga bisa meningkatkan peluang untuk mulai bekerja dan mendapat keuntungan.</p>
+</li>
+<li>
+<p>Pilot-in-the-plane.<br>
+Prinsip ini menganggap hiduo kita seolah olah seperti seorang pilot yang ada di dalam pesawat dan kita yang memegang kemudinya. Dalam contohnya, seorang wirausahawan harus menentukan tujuan bisnis yang ingin dicapai.</p>
+<p>Prinsip ini mengharuskan kita sebagai seorang wirausaha untuk menentukan jalan apa yang ingin kita tempuh untuk mewujdukan semua tujuan awal.</p>
+</li>
+</ol>
+<h5 id="penugasan">PENUGASAN </h5>
+<blockquote>
+<p>Amatilah wirausaha di sekitar lingkungan Anda. Lakukan analisis sampai sejauh mana prinsip effectuation diterapkan dalam mengelola bisnisnya. Identifikasikan pula prinsip effectuation yang paling menonjol pada wirausaha yang Anda amati tersebut.<br>
+Susunlah dalam bentuk ulasan yang terdiri atas 1500-2000 kata. Lengkapi pembahasan Anda dengan foto wirausaha beserta lokasi usaha dan jenis produk/layanan yang ditawarkan.</p>
+</blockquote>
+<p>Pak Agus, Jus kelapa gading<br>
+satu kampung dengan pemilik, pak jujun<br>
+kalo ada bahan ga abis dibuang, yang cepet layu biasanya<br>
+gula disimpen di kulkas</p>
+<ol>
+<li>
+<p>Pendahuluan</p>
+<ol>
+<li>Latar belakang<br>
+Fenomena wirausaha seperti Jus Sinar Garut ini menarik untuk dianalisis menggunakan prisip effectuation. Teori ini, yang dipopulerkan oleh Saras Sarasvathy, berfokus pada bagaimana wirausahawan ahli berpikir di tengah ketidakpastian. Effectuation dimulai dari sumber daya yang ada di tangan (Bird in Hand) untuk kemudian menciptakan berbagai kemungkinan tujuan. Pendekatan ini sangat relevan untuk memahami UMKM di Indonesia yang sering kali tumbuh secara organik dan adaptif.</li>
+</ol>
+<p>Jus Sinar Garut Special Kelapa Gading, sebuah usaha minuman Jus yang ada di daerah Kelapa Gading, berlokasi di depan sebuah Indomaret. Keberadaan "Paguyuban Sinar Garut Asli" menjadi salah satu hal yang membuat saya tertarik membeli jus ini, selain karena produknya yang segar dan buahnya yang manis walau tanpa gula. Organisasi ini menjadi contoh nyata dari prinsip efektuasi berbasis komunitas. Sehingga saya tertarik untuk mengamati bagaimana organisasi tersebut berperan dalam pelaku usaha.<br>
+2. Rumusan masalah<br>
+Apa saja prinsip efektuasi yang digunakan oleh pemilik jus?<br>
+3. Tujuan<br>
+Untuk menjawab penugasan dari sesi 3 tugas 1 mata kuliah Kewirausahaan di Era Digital dan mengamati proses wirausaha yang dilakukan oleh pemilik jus.</p>
+</li>
+<li>
+<p>Profil wirausaha</p>
+<ol>
+<li>Sejarah singkat<br>
+Usaha jus ini dimiliki oleh seseorang bernama Pak Jujun, saat ini Pak Jujun dibantu oleh Pak Agus dalam menjalankan usaha ini. Ketika Pak Agus sedang pulang ke kampung halaman, maka Pak Jujun akan menggantikan untuk berjualan. Keduanya sudah memiliki sertifikat dari organisasi "Paguyuban Sinar Garut Asli" yang terpampang di bagian samping dekat list menunya, sehingga siapapun yang membeli bisa mengetahui kalau pemilik jus tersebut merupakan anggota organisasi dan terjamin asli orang Garut.</li>
+<li>Produk yang ditawarkan<br>
+Berbagai macam jus segar dijual oleh Pak Jujun dan Pak Agus. Mulai dari jus nanas, jus apel, jus belimbing atau bahkan bisa digabung seperti wortel dan tomat, serta ada juga es buah yang dijual dengan harga terjangkau.<br>
+Saya pribadi menyukai jus mangga, jambu dan sirsak yang kental dan memiliki rasa manis dari buahnya tanpa tambahan gula apapun, saya sudah membeli di beberapa tempat lain, namun tempat ini menjadi favorit saya karena buahnya segar dan manis, serta harganya terjangkau, mulai dari 10 ribu rupiah.<br>
+Berdasarkan pengamatan saya pada stok buah, terdapat buah yang lumayan banyak dipajang, yaitu Alpukat. Dari sini dapat disimpulkan bahwa buah yang banyak dibeli oleh para pembeli adalah alpukat. Saya sendiri pernah membeli jus tersebut, rasanya enak dan kental ditambah perpaduan susu coklat yang menjadikan rasanya semakin kaya.</li>
+<li>Target Pasar<br>
+Pelanggan Indomaret yang berbelanja, para pekerja dan warga sekitar.</li>
+<li>Lokasi dan operasional<br>
+Jl. Kelapa Kopyor Timur 4, Blok Bh 1 Kav. 1, RT.7/RW.9, Klp. Gading Tim., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240. Buka dari pukul 7.00 pagi hingga 21.00 malam</li>
+</ol>
+</li>
+<li>
+<p>Metodologi Pengamatan</p>
+<ol>
+<li>Waktu dan tempat<br>
+Selasa, 21 Oktober sekitar pukul 18.30 sore.</li>
+<li>Teknik pengumpulan informasi
+<ul>
+<li>Wawancara langsung terhadap penjual</li>
+<li>Pengamatan dari pembelian hampir setiap hari selama 1 bulan lebih.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Analisis</p>
+<ol>
+<li>
+<p>Prinsip Bird in Hand<br>
+Pemilik merupakan anggota dari organisasi Paguyuban Sinar Garut Asli, yaitu organisasi sosial yang memiliki tujuan membina, serta mengelola es teler sinar garut agar tidak bisa ditiru oleh selain orang garut asli. Dari label ini, para pembeli mendapatkan jaminan kualitas dan standar yang tidak bisa ditiru oleh selain orang Garut. Pemilik maupun penjaga berasal dari daerah yang sama sehingga memiliki hubungan yang dekat sebagai partner bisnis. Ketika si penjual sedang kembali ke kampung halamannya di Garut, maka pemilik langsung yang akan menggantikan untuk menjual jus tersebut.<br>
+Sehingga kemudahan untuk mencari orang kepercayaan seperti Pak Agus adalah bukti dari "siapa yang saya kenal", jika dibandingkan dengan resiko yang dimiliki wirausahawan lain yang merekrut orang asing.</p>
+</li>
+<li>
+<p>Prinsip Affordable Loss<br>
+Dalam menjalankan usaha, penjual memiliki resiko bahwa buah-buah tersebut ada kemungkinan tidak bisa digunakan kembali seperti buah Apel karena cepat oksidasi, sehingga untuk meminimalisir resiko, penjual melakukan stok berdasarkan permintaan pelanggan yang paling banyak. Kerugian beberapa buah apel mungkin terlihat kecil, tetapi jika diakumulasikan maka itu bisa menjadi besar. Resiko seperti buah yang kurang bagus juga salah satu kerugian tersendiri yang harus dihadapi oleh pemilik. Pernah saya mendapati buah yang kurang bagus, dan langsung dibuang oleh penjual.<br>
+Untuk buah buah yang masih bagus dan awet, bisa digunakan kembali esok hari untuk dibuat jus, beserta dengan gula yang diletakkan di kulkas sehingga lebih tahan lama. Karena pada dasarnya stok berdasarkan prinsip ini sangat penting bagi UMKM, mereka tidak bisa menggunakan modal yang besar. Ini bertolak belakang dengan minimarket yang bisa menanggung resiko stok yang lebih besar.<br>
+Kemudian untuk modal awal seperti blender, gerobak merupakan sebuah investasi yang sudah diperhitungkan jangkauan kerugiannya.</p>
+</li>
+<li>
+<p>Prinsip Lemonade<br>
+Penerapan prinsip ini dilakukan dengan cara mencampur beberapa jenis bahan seperti jus wortel dan tomat, jus mangga dan jambu dan lain-lain. Saya pernah mendapati salah satu buah sudah habis, sehingga membeli jus buah yang lain. Namun saya tidak menemukan kelemahan, justru saya merasakan buah yang dibuat sudah manis tanpa perlu tambahan dan buah nya segar.<br>
+Ketika satu buah habis dan pembeli membeli jus lain, ini menjadi sebuah peluang kecil. Peluangnya adalah pembeli jadi mencoba varian baru dan mungkin menemukan favorit baru. Penjual juga jadi tahu buah mana yang harus distok lebih banyak.<br>
+Penawaran jus campuran juga menjadi salah satu cara untuk mengubah keterbatasan pelanggan yang mungkin hanya ingin membeli satu jenis menjadi peluang untuk menawarkan kombinasi rasa unik dan manfaat tambahan. Hal ini bisa menjadi aset untuk mengubah buah yang ada menjadi produk baru.</p>
+</li>
+<li>
+<p>Prinsip Crazy Quilt<br>
+Saya mengamati bahwa pemilik usaha berjualan di depan toko Indomaret. Sehingga antara penjual jus dan pemilik Indomaret sama-sama mendapatkan keuntungan atau istilahnya <strong>simbiosis mutualisme</strong>. Penjual jus mendapatkan limpahan pengunjung dari Indomaret yang pasti ramai, keamanan dan penerangan terjamin tanpa perlu bayar biaya sewa yang mahal. Bagi pemilik Indomaret keberadaan penjual jus bisa menjadi nilai tambah agar pembeli bisa sekalian jajan dan menambah kesan di depan toko, bisa juga untuk menambah peluang dari karyawan toko yang berjaga. Seringkali saya mendapati bahwa orang-orang yang baru keluar dari toko Indomaret dan hendak masuk ke Indomaret membeli jus ini. Begitupun termasuk saya, ketika menunggu jus dibuat, saya membeli beberapa keperluan di Indomaret.<br>
+Penjual juga menyediakan pembayaran melalui QRIS, pejual tidak membuat sistem pembayarannya sendiri. Hal ini sangat menguntungkan bagi kedua belah pihak, pemilik usaha memiliki kemudahan dalam bertransaksi, dan penyedia QRIS mendapatkan pengguna dan fee transaksi. Tanpa kemitraan dengan QRIS, Pak Jujun dan Pak Agus bisa kehilangan potensi pelanggan tersebut.</p>
+</li>
+<li>
+<p>Prinsip Pilot-In-The-Plane<br>
+Berdasarkan hasil pengamatan saya, penjual menyediakan banyak sekali varian jus, bahkan bisa digabung dan tidak menutup kemungkinan jika ingin beberapa varian. Penjual juga memiliki varian es buah yang semakin membuka peluang agar pembeli bisa memiliki banyak opsi untuk membeli jus.<br>
+Penjual tidak bisa mengontrol selera pelanggan yang datang, tapi penjual bisa mengontrol variasi menu yang ditawarkan untuk bisa dibeli oleh banyak orang. Dengan opsi yang banyak, serta opsi mix maupun es buah, penjual bisa menciptakan peluangnya sendiri dan bisa menciptakan masa depan seperti pada prinsip ini.</p>
+</li>
+<li>
+<p>Prinsip efektuasi yang paling dominan<br>
+Berdasarkan hasil analisis di atas, dapat disimpulkan bahwa prinsip yang paling dominan adalah Crazy Quilt dan Bird in Hand.<br>
+Hal ini terlihat jelas dari bagaimana lokasi dari jualan ini yang sangat strategius. Ada banyak sekali pengunjung Indomaret yang keluar masuk setiap harinya. Hal ini dibuktikan dari informasi Google Maps Indomaret terkait, dimana pada setiap harinya cenderung ramai pengunjung. Ini menguntungkan kedua belah pihak, yaitu Indomaret dan penjual jus.<br>
+Posisi jualan yang ada di pinggir jalan, menjadi sangat strategis ditambah posisinya yang berada persis di depan Indomaret. Saya pribadi, serihgkali ketika menunggu jus nya dibuat, saya masuk ke Indomaret untuk membeli beberapa kebutuhan. Begitupula dengan pelanggan-pelanggan lain, berdasarkan pengamatan saya, banyak pembeli jus yang pada awalnya pergi ke Indomaret lalu kemudian membeli jus karena posisinya yang persis di dekat pintu masuk.<br>
+Kemudian ada juga ketersediaan QRIS, memberikan pelanggan kemudahan dalam bertransaksi dan penjual juga mendapatkan pasarnya tersendiri. Sebagaimana penelitian yang dilakukan oleh Alifia, N et al. (2024), QRIS meningkatkan volume dan nominal transaksi yang diproses oleh masing-masing merchant termasuk UMKM. Peningkatan pendapatan yang juga disebabkan oleh kemudahan penggunaan QRIS oleh semua kalangan, terutama kalangan muda yang lebih suka transaksi non-tunai. Sehingga hal ini bisa memperluas peluang bagi penjual untuk mendapatkan pelanggan, seperti mahasiswa, pekerja yang lebih sering bertransaksi non-tunai.<br>
+Kombinasi dari usaha ini adalah modal sosial dari Paguyuban (<em>Bird in Hand</em>) yang memberikan pondasi utama dalam kepercayaan pembeli dan sumber daya yang kemudian dieksekusi dengan kemitraan strategis (<em>Crazy Quilt</em>) dengan Indomaret dan penyedia QRIS. Sehingga satu prinsip menyiapkan "strategi" dan yang lain menentukan "medan perangnya".</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Kesimpulan dan Refleksi</p>
+<ol>
+<li>Kesimpulan<br>
+Pak Jujun sebagai pemilik utama usaha Jus Sinar Garut Special dan Pak Agus sebagai penjaga usaha yang berada di lokasi strategis menawarkan jus yang segar dan harga yang terjangkau.<br>
+Kelima prinsip dari efektuasi bisa terbukti diterapkan dalam situasi tertentu dan dalam porsi yang berbeda-beda.<br>
+Prinsip <em><strong>Bird in Hand</strong></em> dan <em><strong>Crazy Quilt</strong></em> menjadi prinsip utama pada dalam usaha ini dimana modal sosial dari paguyuban dan kombinasi dari mitra seperti Indomaret dan QRIS menjadi kunci utama kesuksesan usaha ini.<br>
+Model bisnis ini, menjadikan contoh nyata bagi UMKM agar bisa terus bertahan dan berkembang di tengah persaingan.</li>
+<li>Refleksi<br>
+Melalui pengamatan ini, saya mendapat ilmu yang berharga dari Pak Jujun dan Pak Agus tentang kewirausahaan. Berjualan tidak hanya memikirkan tentang produk yang akan dijual, tapi juga analisis dari resiko yang akan dihadapi dan prinsip-prinsip yang bisa diterapkan dalam menghadapi kesulitan dan tantangan dalam usaha. Prinsip efektuasi ternyata sudah diterapkan oleh Pak Jujun dan Pak Agus, sehingga hal ini bisa menjadi ilmu ketika saya ingin melakukan wirausaha</li>
+</ol>
+</li>
+</ol>
+<p>Berikut untuk jawaban saya.<br>
+Terima kasih.</p>
+<p><img src="../assets/jusmerge2.png" alt="alt text"></p>
+<p>Sumber referensi:</p>
+<ul>
+<li><a href="https://www.facebook.com/groups/427431460610067/?locale=id_ID">https://www.facebook.com/groups/427431460610067/?locale=id_ID</a></li>
+<li><a href="https://maps.app.goo.gl/Mm1LHTRov5s6HyzM9">https://maps.app.goo.gl/Mm1LHTRov5s6HyzM9</a></li>
+<li>Alifia, N., Permana, E., &amp; Harnovinsah, H. (2024). Analisis penggunaan QRIS terhadap peningkatan pendapatan UMKM. Jurnal Riset Pendidikan Ekonomi, 9(1), 102-115.</li>
+<li>BMP MKMI4203 Kewirausahaan di era digital</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
