@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<style>
+
+</style>
+<body style="font-size: 16px; display: flex; flex-direction: column; align-items: center;">
+    <div class="wrapper"></div>
+    <h3 style="font-weight: bold; font-size: 2.5em; " class="bebas-neue-regular">Selamat Datang</h3>
+    <form id="formLogin" class="formLogin">
+        <div>
+            <input type="text" id="email" name="email" placeholder="Masukkan Email" class="neobrutalism">
+        </div>
+
+        <div>
+            <input type="password" id="password" name="password" placeholder="Masukkan Password" class="neobrutalism">
+        </div>
+
+        <button type="submit" class="neobrutalism" style="margin-top: 40px;">Login</button>
+    </form>
+
+    <div class="modalWrongPassword neobrutalism">
+        <div>
+            <span>Email / password yang anda masukkan salah</span>
+        </div>
+
+        <div style="align-self: flex-end;">
+            <button class="neobrutalism">Lupa Password</button>
+            <button class="neobrutalism">Daftar</button>
+        </div>
+
+        <div style="align-self: flex-end; margin-top: 20px;">
+            <button class="buttonClose neobrutalism">Tutup</button>
+        </div>
+    </div>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/script.js"></script>
+    <script>
+        const formLogin = document.getElementById('formLogin');
+        const modal = document.getElementsByClassName('modalWrongPassword')[0];
+        const wrapper = document.getElementsByClassName('wrapper')[0];
+        formLogin.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = formLogin.email.value.replace(/\s+/g, '');
+            const password = formLogin.password.value.replace(/\s+/g, '');
+
+            const findEmail = dataPengguna.find(user => user.email === email && user.password === password);
+            if (findEmail) {
+                alert('Login berhasil! Selamat datang, ' + findEmail.nama);
+            } else {
+                modal.classList.add('show');
+                wrapper.classList.add('show');
+            }
+        });
+        // modal.classList.add('show');
+
+        const buttonClose = document.getElementsByClassName('buttonClose')[0];
+        buttonClose.addEventListener('click', () => {
+            modal.classList.remove('show');
+            wrapper.classList.remove('show');
+        });
+    </script>
+</body>
+</html>
