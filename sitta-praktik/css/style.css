@@ -1,6 +1,7 @@
 body {
     padding: 10px 20px;
     font-family: Roboto, sans-serif;
+    font-size: 16px;
 }
 
 .bebas-neue-regular {
@@ -114,3 +115,54 @@ input:focus {
     pointer-events: auto;
 }
 
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    span {
+        text-align: center;
+        flex-grow: 1;
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    span:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+    
+    div {
+        position: relative;
+    }
+}
+
+.dropdown {
+    text-align: center;
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+
+    background-color: white;
+    color: black;
+    width: 200px;
+}
+
+.dropdown:hover {
+    .dropdown-content {
+        display: flex;
+    }
+}

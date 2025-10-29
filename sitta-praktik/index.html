@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SITTA</title>
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 <style>
 
 </style>
-<body style="font-size: 16px; display: flex; flex-direction: column; align-items: center;">
+<body style="display: flex; flex-direction: column; align-items: center;">
     <div class="wrapper"></div>
     <h3 style="font-weight: bold; font-size: 2.5em; " class="bebas-neue-regular">Selamat Datang</h3>
     <form id="formLogin" class="formLogin">
@@ -58,6 +58,7 @@
             const findEmail = dataPengguna.find(user => user.email === email && user.password === password);
             if (findEmail) {
                 alert('Login berhasil! Selamat datang, ' + findEmail.nama);
+                window.location.href = 'dashboard.html';
             } else {
                 modal.classList.add('show');
                 wrapper.classList.add('show');

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    .list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardInfo {
+        margin: 14px; 
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detail {
+        margin: 20px;
+    }
+
+    .tableTracking {
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    }
+
+    .formTracking {
+        gap: 20px
+    }
+
+    #nomorDeliveryOrder {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .hidden {
+        display: none;
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div>
+        <form id="formTracking" class="formTracking" style="display: flex; flex-direction: row; justify-content: space-between;">
+            <input type="text" id="nomorDeliveryOrder" name="nomorDeliveryOrder" placeholder="Masukkan Nomor DO (Delivery Order)" class="neobrutalism">
+            
+            <button type="submit" class="neobrutalism" style="padding: 8px; background-color: white;">Lacak Pengiriman</button>
+        </form>
+
+        <div class="list hidden neobrutalism" style="margin-top: 30px; border-radius: 0.5rem;">
+
+            <div class="cardInfo neobrutalism" >
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <span id="nama">Nama</span>
+                        <span id="nomorDo">1231231323</span>
+                    </div>
+
+                    <span class="date" id="tanggalKirim">Date</span>
+                </div>
+
+                <span id="expedisi">Tangerang Selatan</span>
+                <span id="status">Jalan alksjda</span>
+            </div>
+
+            <div class="detail">
+                <h4>Perjalanan Paket</h4>
+
+                <table class="tableTracking">
+                    <thead>
+                        <tr>
+                            <th>Keterangan</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script src="./js/data.js"></script>
+
+<script>
+    const formTracking = document.getElementById('formTracking');
+    formTracking.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nomorDO = formTracking.nomorDeliveryOrder.value.replace(/\s+/g, '');
+
+        const findDO = dataTracking[nomorDO];
+
+        if(findDO) {
+            document.getElementById('nama').innerText = findDO.nama;
+            document.getElementById('nomorDo').innerText = findDO.nomorDO;
+            document.getElementById('tanggalKirim').innerText = findDO.tanggalKirim;
+            document.getElementById('expedisi').innerText = findDO.ekspedisi;
+            document.getElementById('status').innerText = findDO.status;
+
+            const perjalananTable = document.querySelector('.tableTracking tbody');
+            perjalananTable.innerHTML = '';
+
+            findDO.perjalanan.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${item.keterangan}</td><td>${item.waktu}</td>`;
+                perjalananTable.appendChild(row);
+            });
+
+            document.querySelector('.list').classList.remove('hidden');
+        }
+    });
+</script>
+</html>
