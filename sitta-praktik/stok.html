@@ -28,13 +28,13 @@
             border: 2px solid black;
             border-radius: 8px;
             flex-grow: 1;
-
+            
             display: flex;
             justify-content: center;
             align-items: center;
-
+            
         }
-
+        
         div > img {
             max-width: 100%;
             max-height: 100%;
@@ -65,6 +65,7 @@
             opacity: 1;
             transition: opacity 0.3s ease;
             cursor: pointer;
+            background-color: transparent;
         }
     }
 
@@ -159,7 +160,7 @@
 
             <div class="detailInformation">
                 <label for="stok">Stok</label>
-                <input disabled type="text" id="stok" />
+                <input type="number" id="stok" />
             </div>
         </div>
 
@@ -172,6 +173,8 @@
 <script src="./js/data.js"></script>
 
 <script>
+    let _dataBahanAjar = localStorage.getItem('dataBahanAjar') ? JSON.parse(localStorage.getItem('dataBahanAjar')) : [];
+
     const listBahanAjarDiv = document.getElementsByClassName('listBahanAjar')[0];
     const modal = document.getElementsByClassName('modalInformation')[0];
     const wrapper = document.getElementsByClassName('wrapper')[0];
@@ -183,7 +186,7 @@
     const edisiInput = document.getElementById('edisi');
     const stokInput = document.getElementById('stok');
 
-    dataBahanAjar.forEach(bahanAjar => {
+    _dataBahanAjar.forEach(bahanAjar => {
         const bahanAjarWrapperDiv = document.createElement('div');
         const bahanAjarDiv = document.createElement('div');
         const bahanAjarImg = document.createElement('img');
@@ -219,7 +222,23 @@
     buttonClose.addEventListener('click', () => {
         modal.classList.remove('show');
         wrapper.classList.remove('show');
+        window.location.reload();
     });
+
+    stokInput.addEventListener('change', (event) => {
+        const newStok = event.target.value;
+        _dataBahanAjar = _dataBahanAjar.map(bahanAjar => {
+            if (bahanAjar.kodeBarang === kodeBarangInput.value) {
+                return {
+                    ...bahanAjar,
+                    stok: newStok
+                };
+            }
+            return bahanAjar;
+        });
+        localStorage.setItem('dataBahanAjar', JSON.stringify(_dataBahanAjar));
+    });
+
 
     // const modal = document.getElementsByClassName('modalInformation')[0];
     // const wrapper = document.getElementsByClassName('wrapper')[0];

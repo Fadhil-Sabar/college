@@ -149,3 +149,15 @@ var dataTracking = {
     ]
   }
 };
+
+if(localStorage.getItem('dataPengguna') === null) {
+  localStorage.setItem('dataPengguna', JSON.stringify(dataPengguna));
+}
+
+if(localStorage.getItem('dataBahanAjar') === null) {
+  localStorage.setItem('dataBahanAjar', JSON.stringify(dataBahanAjar));
+}
+
+if(localStorage.getItem('dataTracking') === null) {
+  localStorage.setItem('dataTracking', JSON.stringify(dataTracking));
+}
