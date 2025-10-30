@@ -57,11 +57,30 @@
 </style>
 
 <body>
+    <nav class="neobrutalism">
+        <span onclick="openStok()">Informasi Bahan Ajar</span>
+        <span onclick="openTracking()">Tracking Pengiriman</span>
+        <div class="dropdown">
+            Laporan &#9660;
+            <div class="dropdown-content">
+                <span>Monitoring Progress Bahan Ajar</span>
+                <span>Rekap Bahan Ajar</span>
+            </div>
+        </div>
+        <span>Histori Transaksi Bahan Ajar</span>
+    </nav>
+
     <div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Tracking Bahan Ajar</h3>
+            <button type="button" onclick="openDashboard()" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;">Kembali Ke Dashboard</button>
+
+        </div>
+        
         <form id="formTracking" class="formTracking" style="display: flex; flex-direction: row; justify-content: space-between;">
             <input type="text" id="nomorDeliveryOrder" name="nomorDeliveryOrder" placeholder="Masukkan Nomor DO (Delivery Order)" class="neobrutalism">
             
-            <button type="submit" class="neobrutalism" style="padding: 8px; background-color: white;">Lacak Pengiriman</button>
+            <button type="submit" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;">Lacak Pengiriman</button>
         </form>
 
         <div class="list hidden neobrutalism" style="margin-top: 30px; border-radius: 0.5rem;">
@@ -129,4 +148,6 @@
         }
     });
 </script>
+
+<script src="./js/script.js"></script>
 </html>

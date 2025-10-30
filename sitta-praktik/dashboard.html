@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="neobrutalism">
-        <span>Informasi Bahan Ajar</span>
+        <span onclick="openStok()">Informasi Bahan Ajar</span>
         <span onclick="openTracking()">Tracking Pengiriman</span>
         <div class="dropdown">
             Laporan &#9660;
@@ -42,9 +42,8 @@
     } else {
         greeting.textContent = 'Selamat Malam';
     }
-
-    function openTracking() {
-        window.location.href = 'tracking.html';
-    }
 </script>
+
+<script src="./js/script.js"></script>
+
 </html>

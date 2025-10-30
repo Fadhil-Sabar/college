@@ -67,7 +67,7 @@ input:focus {
     }
 }
 
-.modalWrongPassword {
+.modalWrongPassword, .modalInformation {
     opacity: 0;
     pointer-events: none;
     position: fixed;
@@ -91,7 +91,7 @@ input:focus {
     }
 }
 
-.modalWrongPassword.show {
+.modalWrongPassword.show, .modalInformation.show {
     opacity: 1;
     pointer-events: auto;
 }
