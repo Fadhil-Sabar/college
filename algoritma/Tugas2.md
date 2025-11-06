@@ -1,3 +1,7 @@
+Nama: Fadhil Andriawan <br>
+NIM: 053497355 <br>
+Prodi: Sistem Informasi
+
 Selamat malam Bapak tutor, berikut untuk tugas saya.
 
 ```Java
@@ -55,8 +59,10 @@ public static void main() {
 Pada tugas kali ini saya menggunakan util bawaan Java yaitu Scanner untuk mengambil input dari terminal.
 
 Sumber referensi:
+
 - BMP MSIM4203 Modul 4-6
-- https://www.w3schools.com/java/java_user_input.asp
-- https://www.w3schools.com/java/ref_string_equalsignorecase.asp
-- https://www.geeksforgeeks.org/java/float-parsefloat-method-in-java-with-examples/
-- https://www.w3schools.com/java/ref_math_round.asp
+- <https://www.w3schools.com/java/java_user_input.asp>
+- <https://www.w3schools.com/java/ref_string_equalsignorecase.asp>
+- <https://www.geeksforgeeks.org/java/float-parsefloat-method-in-java-with-examples/>
+- <https://www.w3schools.com/java/ref_math_round.asp>
+
