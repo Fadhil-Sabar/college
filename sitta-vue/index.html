@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<body>
+    <div id="app">
+
+        <nav class="neobrutalism">
+            <span @click="openStok">Stok Bahan Ajar</span>
+            <span @click="openTracking">Tracking Pengiriman</span>
+        </nav>
+
+        <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Dashboard Aplikasi SITTA</h3>
+
+        <span style="font-size: 2em;" class="greeting bebas-neue-regular">Selamat Pagi</span>       
+
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            methods: {
+                openStok() {
+                    window.location.href = 'stok.html';
+                },
+                openTracking() {
+                    window.location.href = 'tracking.html';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

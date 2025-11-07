@@ -1,0 +1,206 @@
+:root {
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-gray: #E5E5E5;
+    --color-blue: #14213D;
+    --color-orange: #FCA311;
+    --color-green: #b4ff2b;
+    --color-yellow: #ffee00;
+    --color-red: #ff0040;
+}
+
+body {
+    padding: 10px 20px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+
+    background-color: var(--color-gray);
+}
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.neobrutalism {
+    border: 1px solid black;
+    box-shadow: 8px 8px 0px 0px black;
+    transition: all 0.05s;
+
+}
+
+button {
+    background-color: var(--color-orange) !important;
+    border-radius: 0.25rem;
+}
+
+button:hover {
+    translate: 8px 8px;
+    box-shadow: 0px 0px 0px 0px black;
+}
+
+input:focus {
+    outline: none;
+}
+
+.wrapper {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    backdrop-filter: blur(2px) brightness(0.7);
+    transition: all 0.1s linear;
+}
+
+.wrapper.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: var(--color-white);
+
+    span {
+        text-align: center;
+        flex-grow: 1;
+        padding: 5px;
+        border: 1px solid black;
+
+    }
+
+    span:hover {
+        background-color: var(--color-orange);
+        /* color: white; */
+        cursor: pointer;
+    }
+    
+    div {
+        position: relative;
+    }
+}
+
+.dropdown {
+    text-align: center;
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+
+    background-color: white;
+    color: black;
+    width: 200px;
+}
+
+.dropdown:hover {
+    .dropdown-content {
+        display: flex;
+    }
+}
+
+#tableStok {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+#tableStok th,
+#tableStok td {
+    border: 2px solid var(--color-black);
+    padding: 8px;
+    text-align: left;
+}
+
+#tableStok th {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+#tableStok tbody tr:hover {
+    background-color: var(--color-orange);
+    cursor: pointer;
+}
+
+.modalInformation {
+
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    
+    padding: 20px;
+    z-index: 50;
+    transition: all 0.1s linear;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+        padding: 5px 10px;
+        cursor: pointer;
+
+        background-color: white;
+    }
+
+    position: absolute;
+    width: 500px;
+    background-color: var(--color-gray);
+}
+
+.modalInformation.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalInformation > .imgModalInformation {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Crops to fill the 300x300 box */
+    object-position: center;
+}
+
+.detailInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        font-weight: 700;
+        padding: 5px;
+        color: black;
+    }
+
+    input:disabled {
+        background-color: lightgray;
+    }
+
+}

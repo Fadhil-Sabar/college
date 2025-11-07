@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Bahan Ajar</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<body>
+    <div id="app">
+
+        <div class="wrapper show" v-if="showModal"></div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Informasi Stok Bahan Ajar</h3>
+            <button type="button" @click="openDashboard" class="neobrutalism backToDashboard" style="padding: 8px; cursor: pointer;">Kembali Ke Dashboard</button>
+        </div>
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 20px;">
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px;">
+                <div class="neobrutalism" style="background-color: white;">
+                    <label for="upbjjSelect" style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter UT Daerah:</label>
+                    <select id="upbjjSelect" v-model="selectedUpbjj"  style="padding: 8px; font-size: 1em; font-weight: bold;">
+                        <option :value="''" selected></option>
+                        <option v-for="upbjj in upbjjList" :key="upbjj" :value="upbjj">{{ upbjj }}</option>
+                    </select>
+                </div>
+
+                <button class="neobrutalism" style="padding: 6px; cursor: pointer;" @click="selectedUpbjj = ''">
+                    <img src="assets/filter-remove.svg"/>
+                </button>
+            </div>
+
+            <select id="upbjjSelect" v-model="sortBy" class="neobrutalism" style="padding: 8px; font-size: 1em; font-weight: bold; background-color: white;">
+                <option :value="sortBy" selected>Urut Berdasarkan</option>
+                <option :value="'judul'">Judul</option>
+                <option :value="'stok'">Stok</option>
+                <option :value="'harga'">Harga</option>
+            </select>
+        </div>
+
+        <table id="tableStok" class="neobrutalism">
+            <thead>
+                <tr>
+                    <th>Kode Mata Kuliah / Nama Mata Kuliah</th>
+                    <th>Kategori Mata Kuliah</th>
+                    <th>UT-Daerah</th>
+                    <th>Lokasi Rak</th>
+                    <th>Jumlah Stok Bahan Ajar</th>
+                    <th>Jumlah Stok Safety Bahan Ajar</th>
+                    <th>Status</th>
+                    <th>Catatan</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="bahanAjar in filteredSortedStok" :key="bahanAjar.id" @click="openModal(bahanAjar)">
+                    <td>{{ bahanAjar.kode }} / {{ bahanAjar.judul }}</td>
+                    <td>{{ bahanAjar.kategori }}</td>
+                    <td>{{ bahanAjar.upbjj }}</td>
+                    <td>{{ bahanAjar.lokasiRak }}</td>
+                    <td>{{ bahanAjar.qty }}</td>
+                    <td>{{ bahanAjar.safety }}</td>
+                    <td v-if="bahanAjar.qty === 0" style="background-color: var(--color-red);">Kosong</td>
+                    <td v-else-if="bahanAjar.qty < bahanAjar.safety" style="background-color: var(--color-yellow);">Menipis</td>
+                    <td v-else-if="bahanAjar.qty >= bahanAjar.safety" style="background-color: var(--color-green);">Aman</td>
+                    <td v-html="bahanAjar.catatanHTML"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Modal -->
+        <div class="modalInformation neobrutalism show" v-if="showModal">
+            <div class="neobrutalism">
+                <div class="detailInformation">
+                    <label for="kodeNamaMatkul">Kode Mata Kuliah / Nama Mata Kuliah</label>
+                    <input disabled type="text" id="kodeNamaMatkul" v-model="modal.kodeNamaMatkul" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="kategori">Kategori Mata Kuliah</label>
+                    <input disabled type="text" id="kategori" v-model="modal.kategori" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="upbjj">UPBJJ</label>
+                    <input disabled type="text" id="upbjj" v-model="modal.upbjj" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="lokasiRak">Lokasi Rak</label>
+                    <input disabled type="text" id="lokasiRak" v-model="modal.lokasiRak" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="stok">Jumlah Stok Bahan Ajar</label>
+                    <input type="number" id="stok" v-model="modal.qty" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="safety">Jumlah Stok Safety Bahan Ajar</label>
+                    <input type="number" id="safety" v-model="modal.safety" disabled/>
+                </div>
+
+                <div class="detailInformation">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" disabled v-model="modal.status" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="catatan">Catatan</label>
+                    <textarea id="catatan" disabled v-model="modal.catatanHTML"></textarea>
+                </div>
+            </div>
+
+            <div style="align-self: flex-end; margin-top: 20px;">
+                <button class="buttonClose neobrutalism" @click="closeModal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/stok-app.js"></script>
+<script src="./js/dataBahanAjar.js"></script>
+</html>
