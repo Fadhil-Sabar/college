@@ -55,6 +55,7 @@
                     <th>Lokasi Rak</th>
                     <th>Jumlah Stok Bahan Ajar</th>
                     <th>Jumlah Stok Safety Bahan Ajar</th>
+                    <th>Harga</th>
                     <th>Status</th>
                     <th>Catatan</th>
                 </tr>
@@ -68,6 +69,7 @@
                     <td>{{ bahanAjar.lokasiRak }}</td>
                     <td>{{ bahanAjar.qty }}</td>
                     <td>{{ bahanAjar.safety }}</td>
+                    <td>{{ Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(bahanAjar.harga) }}</td>
                     <td v-if="bahanAjar.qty === 0" style="background-color: var(--color-red);">Kosong</td>
                     <td v-else-if="bahanAjar.qty < bahanAjar.safety" style="background-color: var(--color-yellow);">Menipis</td>
                     <td v-else-if="bahanAjar.qty >= bahanAjar.safety" style="background-color: var(--color-green);">Aman</td>
@@ -110,6 +112,11 @@
                 </div>
 
                 <div class="detailInformation">
+                    <label for="harga">Harga</label>
+                    <input type="number" id="harga" v-model="modal.harga" disabled/>
+                </div>
+
+                <div class="detailInformation">
                     <label for="status">Status</label>
                     <input type="text" id="status" disabled v-model="modal.status" />
                 </div>
@@ -128,5 +135,4 @@
 </body>
 
 <script src="./js/stok-app.js"></script>
-<script src="./js/dataBahanAjar.js"></script>
 </html>
