@@ -21,6 +21,11 @@ createApp({
         closeModal() {
             this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = this.modal.qty;
             this.showModal = false;
+        },
+        clearFilters() {
+            this.selectedUpbjj = '';
+            this.selectedKategori = '';
+            this.selectedStatus = '';
         }
     },
     computed: {
@@ -47,15 +52,36 @@ createApp({
 
             if(this.selectedUpbjj){
                 return stok.filter(item => item.upbjj === this.selectedUpbjj);
-            }else{
-                return stok;
             }
+
+            if(this.selectedKategori){
+                return stok.filter(item => item.kategori === this.selectedKategori);
+            }
+
+            if(this.selectedStatus){
+                return stok.filter(item => {
+                    if(this.selectedStatus === "Aman"){
+                        return item.qty >= item.safety;
+                    }
+                    if(this.selectedStatus === "Menipis"){
+                        return item.qty > 0 && item.qty < item.safety;
+                    }
+                    if(this.selectedStatus === "Kosong"){
+                        return item.qty === 0;
+                    }
+                    return false;
+                });
+            }
+
+            return stok;
         }
     },
     data() {
         return {
             showModal: false,
             selectedUpbjj: '',
+            selectedKategori: '',
+            selectedStatus: '',
             sortBy: '',
             modal: {
                 kodeNamaMatkul: "",
@@ -68,6 +94,11 @@ createApp({
                 status: "",
                 catatanHTML: ""
             },
+            statusList: [
+                "Aman",
+                "Menipis",
+                "Kosong"
+            ],
             upbjjList: [
                 "Jakarta",
                 "Surabaya",

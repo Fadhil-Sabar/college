@@ -16,7 +16,7 @@
 <body>
     <div id="app">
 
-        <div class="wrapper show" v-if="showModal"></div>
+        <div class="wrapper" :class="{ show: showModal }"></div>
 
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Informasi Stok Bahan Ajar</h3>
@@ -28,12 +28,26 @@
                 <div class="neobrutalism" style="background-color: white;">
                     <label for="upbjjSelect" style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter UT Daerah:</label>
                     <select id="upbjjSelect" v-model="selectedUpbjj"  style="padding: 8px; font-size: 1em; font-weight: bold;">
-                        <option :value="''" selected></option>
                         <option v-for="upbjj in upbjjList" :key="upbjj" :value="upbjj">{{ upbjj }}</option>
                     </select>
                 </div>
 
-                <button class="neobrutalism" style="padding: 6px; cursor: pointer;" @click="selectedUpbjj = ''">
+                <div class="neobrutalism" style="background-color: white;">
+                    <label for="kategoriSelect" style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter Kategori:</label>
+                    <select id="kategoriSelect" v-model="selectedKategori"  style="padding: 8px; font-size: 1em; font-weight: bold;" :disabled="!selectedUpbjj">
+                        <option :value="''" selected v-if="!selectedUpbjj">Filter UT Daerah Dahulu</option>
+                        <option v-for="kategori in kategoriList" :key="kategori" :value="kategori">{{ kategori }}</option>
+                    </select>
+                </div>
+
+                <div class="neobrutalism" style="background-color: white;">
+                    <label for="statusSelect" style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter Status:</label>
+                    <select id="statusSelect" v-model="selectedStatus"  style="padding: 8px; font-size: 1em; font-weight: bold;">
+                        <option v-for="status in statusList" :key="status" :value="status">{{ status }}</option>
+                    </select>
+                </div>
+
+                <button class="neobrutalism" style="padding: 6px; cursor: pointer;" @click="clearFilters">
                     <img src="assets/filter-remove.svg"/>
                 </button>
             </div>
@@ -79,7 +93,7 @@
         </table>
 
         <!-- Modal -->
-        <div class="modalInformation neobrutalism show" v-if="showModal">
+        <div class="modalInformation neobrutalism" :class="{ show: showModal }">
             <div class="neobrutalism">
                 <div class="detailInformation">
                     <label for="kodeNamaMatkul">Kode Mata Kuliah / Nama Mata Kuliah</label>
