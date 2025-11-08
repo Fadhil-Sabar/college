@@ -96,7 +96,7 @@
                         <option v-for="paketEach in paket" :key="paketEach" :value="paketEach">{{ paketEach.kode }} - {{ paketEach.nama }}</option>
                     </select>
 
-                    <div class="neobrutalism" style="font-size: 0.875em; box-shadow: none; padding: 0px 7px;">
+                    <div v-if="modal.paket" class="neobrutalism" style="font-size: 0.875em; box-shadow: none; padding: 0px 7px;">
                         <span><i>Isi Paket:</i></span>
                         <ul>
                             <li v-for="item in modal.paket.isi" :key="item"><i>{{ item }}</i></li>

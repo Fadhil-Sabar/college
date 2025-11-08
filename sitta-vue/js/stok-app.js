@@ -3,7 +3,9 @@ const { createApp } = Vue;
 createApp({
     watch: {
         'modal.qty'(newVal) {
-            this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = newVal;
+            if(newVal >= 0){
+                this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = newVal || this.stok;
+            }
         }
     },
     methods: {

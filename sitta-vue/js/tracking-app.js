@@ -85,7 +85,7 @@ createApp({
         return {
             nomorDeliveryOrder: '',
             modal: {
-                show: true,
+                show: false,
                 nomorDeliveryOrder: '',
                 nim: '',
                 nama: '',

@@ -16,8 +16,6 @@
 <body>
     <div id="app">
 
-        <div class="wrapper" :class="{ show: showModal }"></div>
-
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Informasi Stok Bahan Ajar</h3>
             <button type="button" @click="openDashboard" class="neobrutalism backToDashboard" style="padding: 8px; cursor: pointer;">Kembali Ke Dashboard</button>
@@ -93,6 +91,7 @@
         </table>
 
         <!-- Modal -->
+        <div class="wrapper" :class="{ show: showModal }"></div>
         <div class="modalInformation neobrutalism" :class="{ show: showModal }">
             <div class="neobrutalism">
                 <div class="detailInformation">
@@ -117,7 +116,7 @@
 
                 <div class="detailInformation">
                     <label for="stok">Jumlah Stok Bahan Ajar</label>
-                    <input type="number" id="stok" v-model="modal.qty" />
+                    <input type="number" id="stok" v-model="modal.qty" min="0" />
                 </div>
 
                 <div class="detailInformation">
