@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Delivery Order</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<body>
+    <div id="app">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 2.5em;" class="bebas-neue-regular">Tracking Delivery Order</h3>
+            <button type="button" @click="openDashboard" class="neobrutalism backToDashboard" style="padding: 8px; cursor: pointer;">Kembali Ke Dashboard</button>
+        </div>
+
+        <form id="formTracking" class="formTracking" style="display: flex; flex-direction: row; justify-content: space-between;">
+            <input type="text" id="nomorDeliveryOrder" name="nomorDeliveryOrder" placeholder="Masukkan Nomor DO (Delivery Order)" class="neobrutalism" v-model="nomorDeliveryOrder" required />
+            
+            <button type="submit" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;" @click="searchDo">Lacak Pengiriman</button>
+            <button type="button" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;" @click="createNewDo"><span style="font-size: 1.25em; justify-self: center;">+</span> Tambah DO Baru</button>
+        </form>
+
+        <div class="list neobrutalism" :class="{ hidden: !table.show }" style="margin-top: 30px; border-radius: 0.5rem;">
+
+            <div class="cardInfo neobrutalism" >
+                <div style="display: flex; justify-content: space-between;">
+                    <span>{{ table.nomorDo }}</span>
+                    <span class="date" id="tanggalKirim">{{ table.tanggalKirim }}</span>
+                </div>
+                <span>{{ table.nama }} - {{ table.nim }}</span>
+
+                <span id="expedisi">{{ table.ekspedisi }}</span>
+                <span id="status">{{ table.status }}</span>
+            </div>
+
+            <div class="detail">
+                <h4>Perjalanan Paket</h4>
+
+                <table class="tableTracking">
+                    <thead>
+                        <tr>
+                            <th>Keterangan</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for="perjalanan in table.perjalanan" :key="perjalanan.waktu">
+                            <td>{{ perjalanan.keterangan }}</td>
+                            <td>{{ perjalanan.waktu }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="wrapper" :class="{ show: modal.show }"></div>
+        <div class="modalInformation neobrutalism" :class="{ show: modal.show }">
+            <div class="neobrutalism">
+                <div class="detailInformation">
+                    <label for="nomorDeliveryOrder">Nomor DO</label>
+                    <input disabled type="text" id="nomorDeliveryOrder" v-model="modal.nomorDeliveryOrder" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" v-model="modal.nim" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" v-model="modal.nama" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="ekspedisi">Ekspedisi</label>
+                    <select id="ekspedisi" v-model="modal.ekspedisi"  style="padding: 5px; background-color: var(--color-white);">
+                        <option v-for="pengiriman in pengirimanList" :key="pengiriman" :value="pengiriman">{{ pengiriman.kode }} - {{ pengiriman.nama }}</option>
+                    </select>
+                </div>
+
+                <div class="detailInformation">
+                    <label for="paket">Paket</label>
+                    <select id="paket" v-model="modal.paket"  style="padding: 5px; background-color: var(--color-white);">
+                        <option v-for="paketEach in paket" :key="paketEach" :value="paketEach">{{ paketEach.kode }} - {{ paketEach.nama }}</option>
+                    </select>
+
+                    <div class="neobrutalism" style="font-size: 0.875em; box-shadow: none; padding: 0px 7px;">
+                        <span><i>Isi Paket:</i></span>
+                        <ul>
+                            <li v-for="item in modal.paket.isi" :key="item"><i>{{ item }}</i></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detailInformation">
+                    <label for="tanggalKirim">Tanggal Kirim</label>
+                    <input type="date" id="tanggalKirim" v-model="modal.tanggalKirim" />
+                </div>
+
+                <div class="detailInformation">
+                    <label for="totalHarga">Total Harga</label>
+                    <input type="number" disabled id="totalHarga" v-model="modal.totalHarga" />
+                </div>
+
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button class="buttonClose neobrutalism" style="background-color: var(--color-white) !important;" @click="closeModal">Tutup</button>
+                <button class="buttonClose neobrutalism" @click="saveModal">Simpan</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/dataBahanAjar.js"></script>
+<script src="./js/tracking-app.js"></script>
+
+</html>

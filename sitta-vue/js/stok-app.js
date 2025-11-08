@@ -1,6 +1,11 @@
 const { createApp } = Vue;
 
 createApp({
+    watch: {
+        'modal.qty'(newVal) {
+            this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = newVal;
+        }
+    },
     methods: {
         openDashboard() {
             window.location.href = 'index.html';
@@ -19,7 +24,6 @@ createApp({
             this.showModal = true;
         },
         closeModal() {
-            this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = this.modal.qty;
             this.showModal = false;
         },
         clearFilters() {
