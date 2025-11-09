@@ -156,7 +156,7 @@
 
             <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
                 <button class="buttonClose neobrutalism" style="background-color: var(--color-white) !important;" @click="closeModal">Tutup</button>
-                <button class="buttonClose neobrutalism" @click="saveModal">Simpan</button>
+                <button class="buttonClose neobrutalism" @click="saveModal" v-if="isCreate">Simpan</button>
             </div>
         </div>
     </div>
