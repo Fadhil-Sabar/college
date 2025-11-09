@@ -82,15 +82,16 @@
             <tbody>
                 <tr v-for="bahanAjar in filteredSortedStok" :key="bahanAjar.id" @click="openModal(bahanAjar)">
                     <td>{{ bahanAjar.kode }} / {{ bahanAjar.judul }}</td>
-                    <td>{{ bahanAjar.kategori }}</td>
-                    <td>{{ bahanAjar.upbjj }}</td>
-                    <td>{{ bahanAjar.lokasiRak }}</td>
-                    <td>{{ bahanAjar.qty }}</td>
-                    <td>{{ bahanAjar.safety }}</td>
+                    <td v-text="bahanAjar.kategori"></td>
+                    <td v-text="bahanAjar.upbjj"></td>
+                    <td v-text="bahanAjar.lokasiRak"></td>
+                    <td v-text="bahanAjar.qty"></td>
+                    <td v-text="bahanAjar.safety"></td>
                     <td>{{ Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(bahanAjar.harga) }}</td>
                     <td v-if="bahanAjar.qty === 0" style="background-color: var(--color-red);">Kosong</td>
                     <td v-else-if="bahanAjar.qty < bahanAjar.safety" style="background-color: var(--color-yellow);">Menipis</td>
                     <td v-else-if="bahanAjar.qty >= bahanAjar.safety" style="background-color: var(--color-green);">Aman</td>
+                    <td v-else style="background-color: var(--color-green);">Status tidak valid</td>
                     <td v-html="bahanAjar.catatanHTML"></td>
                 </tr>
             </tbody>
@@ -103,7 +104,7 @@
                 <div class="detailInformation">
                     <label for="kodeNamaMatkul">Kode Mata Kuliah / Nama Mata Kuliah</label>
                     <input :disabled="!isCreate" :class="{ invalid: !/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length) }" type="text" id="kodeNamaMatkul" v-model="modal.kodeNamaMatkul" />
-                    <small v-if="!/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length)" class="error-message"><i>Format harus "KODE / NAMA MATA KULIAH"</i></small>
+                    <small v-show="!/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length)" class="error-message"><i>Format harus "KODE / NAMA MATA KULIAH"</i></small>
                 </div>
 
                 <div class="detailInformation">

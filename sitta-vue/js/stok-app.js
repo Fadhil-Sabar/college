@@ -100,15 +100,15 @@ createApp({
             }
 
             if(this.selectedUpbjj){
-                return stok.filter(item => item.upbjj === this.selectedUpbjj);
+                stok = stok.filter(item => item.upbjj === this.selectedUpbjj);
             }
 
             if(this.selectedKategori){
-                return stok.filter(item => item.kategori === this.selectedKategori);
+                stok = stok.filter(item => item.kategori === this.selectedKategori);
             }
 
             if(this.selectedStatus){
-                return stok.filter(item => {
+                stok = stok.filter(item => {
                     if(this.selectedStatus === "Aman"){
                         return item.qty >= item.safety;
                     }

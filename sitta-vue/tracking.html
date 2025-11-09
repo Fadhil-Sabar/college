@@ -93,7 +93,7 @@
                 <div class="detailInformation">
                     <label for="paket">Paket</label>
                     <select id="paket" v-model="modal.paket"  style="padding: 5px;">
-                        <option v-for="paketEach in paket" :key="paketEach" :value="paketEach">{{ paketEach.kode }} - {{ paketEach.nama }}</option>
+                        <option v-for="paketEach in paket" :key="paketEach" v-bind:value="paketEach">{{ paketEach.kode }} - {{ paketEach.nama }}</option>
                     </select>
 
                     <div v-if="modal.paket" class="neobrutalism" style="font-size: 0.875em; box-shadow: none; padding: 0px 7px;">
