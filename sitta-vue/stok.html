@@ -50,12 +50,18 @@
                 </button>
             </div>
 
-            <select id="upbjjSelect" v-model="sortBy" class="neobrutalism" style="padding: 8px; font-size: 1em; font-weight: bold; background-color: white;">
-                <option :value="sortBy" selected>Urut Berdasarkan</option>
-                <option :value="'judul'">Judul</option>
-                <option :value="'stok'">Stok</option>
-                <option :value="'harga'">Harga</option>
-            </select>
+            <div style="display: flex; gap: 10px;">
+                <select id="upbjjSelect" v-model="sortBy" class="neobrutalism" style="padding: 8px; font-size: 1em; font-weight: bold; background-color: white;">
+                    <option :value="sortBy" selected>Urut Berdasarkan</option>
+                    <option :value="'judul'">Judul</option>
+                    <option :value="'stok'">Stok</option>
+                    <option :value="'harga'">Harga</option>
+                </select>
+
+                <button class="neobrutalism" style="padding: 7px; cursor: pointer;" @click="createNewBahanAjar">
+                    <span style="font-size: 1.25em; justify-self: center;">+</span> Tambah Data Bahan Ajar
+                </button>
+            </div>
         </div>
 
         <table id="tableStok" class="neobrutalism">
@@ -96,52 +102,61 @@
             <div class="neobrutalism">
                 <div class="detailInformation">
                     <label for="kodeNamaMatkul">Kode Mata Kuliah / Nama Mata Kuliah</label>
-                    <input disabled type="text" id="kodeNamaMatkul" v-model="modal.kodeNamaMatkul" />
+                    <input :disabled="!isCreate" :class="{ invalid: !/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length) }" type="text" id="kodeNamaMatkul" v-model="modal.kodeNamaMatkul" />
+                    <small v-if="!/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length)" class="error-message"><i>Format harus "KODE / NAMA MATA KULIAH"</i></small>
                 </div>
 
                 <div class="detailInformation">
                     <label for="kategori">Kategori Mata Kuliah</label>
-                    <input disabled type="text" id="kategori" v-model="modal.kategori" />
+                    <select :disabled="!isCreate" id="kategori" v-model="modal.kategori"  style="padding: 5px;">
+                        <option v-for="kategori in kategoriList" :key="kategori" :value="kategori">{{ kategori}}</option>
+                    </select>
                 </div>
 
                 <div class="detailInformation">
                     <label for="upbjj">UPBJJ</label>
-                    <input disabled type="text" id="upbjj" v-model="modal.upbjj" />
+                    <select :disabled="!isCreate" id="upbjj" v-model="modal.upbjj"  style="padding: 5px;">
+                        <option v-for="upbjj in upbjjList" :key="upbjj" :value="upbjj">{{ upbjj}}</option>
+                    </select>
                 </div>
 
                 <div class="detailInformation">
                     <label for="lokasiRak">Lokasi Rak</label>
-                    <input disabled type="text" id="lokasiRak" v-model="modal.lokasiRak" />
+                    <input :disabled="!isCreate" type="text" id="lokasiRak" v-model="modal.lokasiRak" />
                 </div>
 
                 <div class="detailInformation">
                     <label for="stok">Jumlah Stok Bahan Ajar</label>
-                    <input type="number" id="stok" v-model="modal.qty" min="0" />
+                    <input :class="{ invalid: modal.qty < 0 }" type="number" id="stok" v-model="modal.qty" min="0" />
+                    <small v-if="modal.qty < 0" class="error-message"><i>Jumlah stok tidak boleh negatif</i></small>
                 </div>
-
+                
                 <div class="detailInformation">
                     <label for="safety">Jumlah Stok Safety Bahan Ajar</label>
-                    <input type="number" id="safety" v-model="modal.safety" disabled/>
+                    <input :class="{ invalid: modal.safety < 0 }" :disabled="!isCreate" type="number" id="safety" v-model="modal.safety" />
+                    <small v-if="modal.safety < 0" class="error-message"><i>Jumlah stok safety tidak boleh negatif</i></small>
                 </div>
-
+                
                 <div class="detailInformation">
                     <label for="harga">Harga</label>
-                    <input type="number" id="harga" v-model="modal.harga" disabled/>
+                    <input :class="{ invalid: modal.harga < 0 }" :disabled="!isCreate" type="number" id="harga" v-model="modal.harga" />
+                    <small v-if="modal.harga < 0" class="error-message"><i>Harga tidak boleh negatif</i></small>
                 </div>
 
                 <div class="detailInformation">
                     <label for="status">Status</label>
-                    <input type="text" id="status" disabled v-model="modal.status" />
+                    <input disabled type="text" id="status" v-model="modal.status" />
                 </div>
 
                 <div class="detailInformation">
                     <label for="catatan">Catatan</label>
-                    <textarea id="catatan" disabled v-model="modal.catatanHTML"></textarea>
+                    <textarea :disabled="!isCreate" id="catatan" v-model="modal.catatanHTML"></textarea>
                 </div>
             </div>
 
-            <div style="align-self: flex-end; margin-top: 20px;">
-                <button class="buttonClose neobrutalism" @click="closeModal">Tutup</button>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button class="buttonClose neobrutalism" style="background-color: var(--color-white) !important;" @click="closeModal">Tutup</button>
+                <button class="buttonClose neobrutalism" @click="saveModal">Simpan</button>
             </div>
         </div>
     </div>

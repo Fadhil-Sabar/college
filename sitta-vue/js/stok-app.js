@@ -3,9 +3,11 @@ const { createApp } = Vue;
 createApp({
     watch: {
         'modal.qty'(newVal) {
-            if(newVal >= 0){
-                this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = newVal || this.stok;
-            }
+            if(!newVal || newVal < 0) return;
+            if(!this.isCreate) this.stok.find(item => item.kode === this.modal.kodeNamaMatkul.split(' / ')[0]).qty = newVal || this.stok;
+        },
+        status(newVal) {
+            this.modal.status = newVal;
         }
     },
     methods: {
@@ -32,6 +34,47 @@ createApp({
             this.selectedUpbjj = '';
             this.selectedKategori = '';
             this.selectedStatus = '';
+        },
+        createNewBahanAjar() {
+            this.modal = {
+                kodeNamaMatkul: "",
+                kategori: "",
+                upbjj: "",
+                lokasiRak: "",
+                harga: 0,
+                qty: 0,
+                safety: 0,
+                status: "",
+                catatanHTML: ""
+            };
+            this.showModal = true;
+            this.isCreate = true;
+        },
+        saveModal() {
+            if(!/(\/)/.test(this.modal.kodeNamaMatkul) || !(this.modal.kodeNamaMatkul.split(' / ')[1]?.length)) {
+                alert('Format Kode Mata Kuliah / Nama Mata Kuliah tidak valid. Gunakan format "KODE / NAMA MATA KULIAH".');
+                return;
+            }
+
+            if(!this.modal.kategori || !this.modal.upbjj || !this.modal.lokasiRak || this.modal.harga < 0 || this.modal.qty < 0 || this.modal.safety < 0) {
+                alert('Semua field harus diisi dengan benar.');
+                return;
+            }
+
+            const [kode] = this.modal.kodeNamaMatkul.split(' / ');
+            this.stok.push({
+                kode: kode,
+                judul: this.modal.kodeNamaMatkul.split(' / ')[1],
+                kategori: this.modal.kategori,
+                upbjj: this.modal.upbjj,
+                lokasiRak: this.modal.lokasiRak,
+                harga: this.modal.harga,
+                qty: this.modal.qty,
+                safety: this.modal.safety,
+                catatanHTML: this.modal.catatanHTML
+            });
+            this.isCreate = false;
+            this.closeModal();
         }
     },
     computed: {
@@ -80,10 +123,14 @@ createApp({
             }
 
             return stok;
+        },
+        status(){
+            return this.modal.qty === 0 ? "Kosong" : this.modal.qty < this.modal.safety ? "Menipis" : "Aman";
         }
     },
     data() {
         return {
+            isCreate: false,
             showModal: false,
             selectedUpbjj: '',
             selectedKategori: '',

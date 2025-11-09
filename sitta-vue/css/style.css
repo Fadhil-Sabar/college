@@ -63,6 +63,15 @@ input:focus {
     pointer-events: auto;
 }
 
+.invalid {
+    border: 2px solid var(--color-red) !important;
+}
+
+select {
+    background-color: var(--color-white);
+    font-weight: bold;
+}
+
 nav {
     display: flex;
     width: 100%;
@@ -141,7 +150,7 @@ nav {
 }
 
 .modalInformation {
-
+    overflow: scroll;
     opacity: 0;
     pointer-events: none;
     position: fixed;

@@ -85,14 +85,14 @@
 
                 <div class="detailInformation">
                     <label for="ekspedisi">Ekspedisi</label>
-                    <select id="ekspedisi" v-model="modal.ekspedisi"  style="padding: 5px; background-color: var(--color-white);">
+                    <select id="ekspedisi" v-model="modal.ekspedisi"  style="padding: 5px;">
                         <option v-for="pengiriman in pengirimanList" :key="pengiriman" :value="pengiriman">{{ pengiriman.kode }} - {{ pengiriman.nama }}</option>
                     </select>
                 </div>
 
                 <div class="detailInformation">
                     <label for="paket">Paket</label>
-                    <select id="paket" v-model="modal.paket"  style="padding: 5px; background-color: var(--color-white);">
+                    <select id="paket" v-model="modal.paket"  style="padding: 5px;">
                         <option v-for="paketEach in paket" :key="paketEach" :value="paketEach">{{ paketEach.kode }} - {{ paketEach.nama }}</option>
                     </select>
 
