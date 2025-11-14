@@ -1,0 +1,3 @@
+Anda diminta membaca materi mengenai Model Bisnisdi era digitalisasi (sustainability)   yang terdiri dari 3 model yaitu:  model bisnis berbasis teknologi, model bisnis berkelanjutan, model bisnis berbasis data. Pilihlah salah satu model dan terapkan pada bisnis yang saat ini sedang booming (trending). (CEK 3 BISNIS MODEL DI PPT PENGAYAAN).
+
+Model berbasis teknologi, yaitu bisnis yang menerapkan teknologi dalam operasional dan strategi bisnis. Sebagai contoh bisnis platform digital seperti e-commerce, layanan digital atau Software as a Service (SaaS).
