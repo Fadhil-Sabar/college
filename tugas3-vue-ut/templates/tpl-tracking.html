@@ -1,0 +1,50 @@
+<div>
+    <form id="formTracking" class="formTracking"
+        style="display: flex; flex-direction: row; justify-content: space-between;">
+        <input type="text" id="searchTracking" name="searchTracking"
+            placeholder="Masukkan Nomor DO (Delivery Order) atau NIM" class="neobrutalism" v-model="searchTracking"
+            v-on:keyup.esc="handleEscTracking" required />
+
+        <button type="submit" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;"
+            @click="searchDo">Lacak
+            Pengiriman</button>
+        <button type="button" class="neobrutalism" style="padding: 8px; background-color: white; cursor: pointer;"
+            @click="createNewDo"><span style="font-size: 1.25em; justify-self: center;">+</span> Tambah DO Baru</button>
+    </form>
+
+    <div class="list neobrutalism" :class="{ hidden: !table.show }" style="margin-top: 30px; border-radius: 0.5rem;">
+
+        <div class="cardInfo neobrutalism">
+            <div style="display: flex; justify-content: space-between;">
+                <span>{{ table.nomorDo }}</span>
+                <span class="date" id="tanggalKirim">{{ table.tanggalKirim }}</span>
+            </div>
+            <span>{{ table.nama }} - {{ table.nim }}</span>
+
+            <span id="expedisi">{{ table.ekspedisi }}</span>
+            <span id="status">{{ table.status }}</span>
+        </div>
+
+        <div class="detail">
+            <h4>Perjalanan Paket</h4>
+
+            <table class="tableTracking">
+                <thead>
+                    <tr>
+                        <th>Keterangan</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="perjalanan in table.perjalanan" :key="perjalanan.waktu">
+                        <td>{{ perjalanan.keterangan }}</td>
+                        <td>{{ perjalanan.waktu }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

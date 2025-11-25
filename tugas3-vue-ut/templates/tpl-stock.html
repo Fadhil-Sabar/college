@@ -1,0 +1,103 @@
+<div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 20px;">
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 10px;">
+            <div class="neobrutalism" style="background-color: white;">
+                <label for="upbjjSelect"
+                    style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter
+                    UT
+                    Daerah:</label>
+                <select id="upbjjSelect" v-model="selectedUpbjj"
+                    style="padding: 8px; font-size: 1em; font-weight: bold;">
+                    <option v-for="upbjj in upbjjList" :key="upbjj" :value="upbjj">{{ upbjj }}</option>
+                </select>
+            </div>
+
+            <div class="neobrutalism" style="background-color: white;">
+                <label for="kategoriSelect"
+                    style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter
+                    Kategori:</label>
+                <select id="kategoriSelect" v-model="selectedKategori"
+                    style="padding: 8px; font-size: 1em; font-weight: bold;" :disabled="!selectedUpbjj">
+                    <option :value="''" selected v-if="!selectedUpbjj">Filter UT Daerah Dahulu</option>
+                    <option v-for="kategori in kategoriList" :key="kategori" :value="kategori">{{ kategori }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="neobrutalism" style="background-color: white;">
+                <label for="statusSelect"
+                    style="align-self: center; margin-left: 10px; margin-right: 10px; font-weight: bold;">Filter
+                    Status:</label>
+                <select id="statusSelect" v-model="selectedStatus"
+                    style="padding: 8px; font-size: 1em; font-weight: bold;">
+                    <option v-for="status in statusList" :key="status" :value="status">{{ status }}</option>
+                </select>
+            </div>
+
+            <button class="neobrutalism" style="padding: 6px; cursor: pointer;" @click="clearFilters">
+                <img src="assets/img/filter-remove.svg" />
+            </button>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <select id="upbjjSelect" v-model="sortBy" class="neobrutalism"
+                style="padding: 8px; font-size: 1em; font-weight: bold; background-color: white;">
+                <option :value="sortBy" selected>Urut Berdasarkan</option>
+                <option :value="'judul'">Judul</option>
+                <option :value="'stok'">Stok</option>
+                <option :value="'harga'">Harga</option>
+            </select>
+
+            <button class="neobrutalism" style="padding: 7px; cursor: pointer;" @click="createNewBahanAjar">
+                <span style="font-size: 1.25em; justify-self: center;">+</span> Tambah Data Bahan Ajar
+            </button>
+        </div>
+    </div>
+
+    <table id="tableStok" class="neobrutalism">
+        <thead>
+            <tr>
+                <th>Kode Mata Kuliah / Nama Mata Kuliah</th>
+                <th>Kategori Mata Kuliah</th>
+                <th>UT-Daerah</th>
+                <th>Lokasi Rak</th>
+                <th>Jumlah Stok Bahan Ajar</th>
+                <th>Jumlah Stok Safety Bahan Ajar</th>
+                <th>Harga</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr v-for="bahanAjar in filteredSortedStok" :key="bahanAjar.id" @click="openModal(bahanAjar)">
+                <td>{{ bahanAjar.kode }} / {{ bahanAjar.judul }}</td>
+                <td v-text="bahanAjar.kategori"></td>
+                <td v-text="bahanAjar.upbjj"></td>
+                <td v-text="bahanAjar.lokasiRak"></td>
+                <td>{{ Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR'
+                    }).format(bahanAjar.harga) }}
+                <td v-text="bahanAjar.qty"></td>
+                <td v-text="bahanAjar.safety"></td>
+                </td>
+                <td class="tooltip" v-if="bahanAjar.qty === 0" style="background-color: var(--color-red);">
+                    Kosong
+                    <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
+                </td>
+                <td class="tooltip" v-else-if="bahanAjar.qty < bahanAjar.safety"
+                    style="background-color: var(--color-yellow);">
+                    Menipis
+                    <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
+                </td>
+                <td class="tooltip" v-else-if="bahanAjar.qty >= bahanAjar.safety"
+                    style="background-color: var(--color-green);">
+                    Aman
+                    <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
+                </td>
+                <td class="tooltip" v-else style="background-color: var(--color-green);">
+                    Status tidak valid
+                    <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
