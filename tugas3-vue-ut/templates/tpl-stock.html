@@ -65,20 +65,20 @@
                 <th>Jumlah Stok Safety Bahan Ajar</th>
                 <th>Harga</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr v-for="bahanAjar in filteredSortedStok" :key="bahanAjar.id" @click="openModal(bahanAjar)">
+            <tr v-for="bahanAjar in filteredSortedStok" :key="bahanAjar.kode">
                 <td>{{ bahanAjar.kode }} / {{ bahanAjar.judul }}</td>
                 <td v-text="bahanAjar.kategori"></td>
                 <td v-text="bahanAjar.upbjj"></td>
                 <td v-text="bahanAjar.lokasiRak"></td>
-                <td>{{ Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR'
-                    }).format(bahanAjar.harga) }}
                 <td v-text="bahanAjar.qty"></td>
                 <td v-text="bahanAjar.safety"></td>
-                </td>
+                <td>{{ Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR'
+                    }).format(bahanAjar.harga) }}
                 <td class="tooltip" v-if="bahanAjar.qty === 0" style="background-color: var(--color-red);">
                     Kosong
                     <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
@@ -96,6 +96,17 @@
                 <td class="tooltip" v-else style="background-color: var(--color-green);">
                     Status tidak valid
                     <div class="tooltipText neobrutalism" v-html="bahanAjar.catatanHTML"></div>
+                </td>
+                <td>
+                    <div class="wrapperActions">
+                        <button class="neobrutalism" @click="openModal(bahanAjar, true)">
+                            <img src="assets/img/edit-document.svg" />
+                        </button>
+                        <button class="neobrutalism"
+                            @click="openPopup('Apakah Anda yakin ingin menghapus data bahan ajar ' + bahanAjar.judul, bahanAjar.kode)">
+                            <img src="assets/img/delete.svg" />
+                        </button>
+                    </div>
                 </td>
             </tr>
         </tbody>

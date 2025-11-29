@@ -5,11 +5,19 @@ Vue.component('tracking-do', {
         searchDo(event) {
             event.preventDefault();
 
-            const doData = Object.values(this.tracking.find(item => item[this.searchTracking] || Object.values(item)[0].nim === this.searchTracking))[0];
-            if(!doData){
+            if(!this.searchTracking){
+                alert("Nomor DO tidak boleh kosong.");
+                return;
+            }
+
+            const findData = this.tracking.find(item => item[this.searchTracking] || Object.values(item)[0].nim === this.searchTracking);
+
+            if(!findData){
                 alert("Nomor DO tidak ditemukan.");
                 return;
             }
+
+            const doData = Object.values(findData)[0];
 
             this.table = {
                 show: true,

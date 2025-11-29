@@ -17,7 +17,11 @@
         <div class="cardInfo neobrutalism">
             <div style="display: flex; justify-content: space-between;">
                 <span>{{ table.nomorDo }}</span>
-                <span class="date" id="tanggalKirim">{{ table.tanggalKirim }}</span>
+                <span class="date" id="tanggalKirim">{{ new Date(table.tanggalKirim).toLocaleString("id-ID", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                }) }}</span>
             </div>
             <span>{{ table.nama }} - {{ table.nim }}</span>
 

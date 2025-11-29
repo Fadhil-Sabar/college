@@ -1,0 +1,70 @@
+<div class="modalInformation neobrutalism" :class="{ show: showModal }">
+    <div class="neobrutalism">
+        <div class="detailInformation">
+            <label for="kodeNamaMatkul">Kode Mata Kuliah / Nama Mata Kuliah</label>
+            <input v-on:keyup.enter="saveModal"
+                :class="{ invalid: !/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length) }"
+                type="text" id="kodeNamaMatkul" v-model="modal.kodeNamaMatkul" />
+            <small v-show="!/(\/)/.test(modal.kodeNamaMatkul) || !(modal.kodeNamaMatkul.split(' / ')[1]?.length)"
+                class="error-message"><i>Format harus "KODE / NAMA MATA KULIAH"</i></small>
+        </div>
+
+        <div class="detailInformation">
+            <label for="kategori">Kategori Mata Kuliah</label>
+            <select id="kategori" v-model="modal.kategori" style="padding: 5px;">
+                <option v-for="kategori in dataBahanAjar.kategoriList" :key="kategori" :value="kategori">{{
+                    kategori}}</option>
+            </select>
+        </div>
+
+        <div class="detailInformation">
+            <label for="upbjj">UPBJJ</label>
+            <select id="upbjj" v-model="modal.upbjj" style="padding: 5px;">
+                <option v-for="upbjj in dataBahanAjar.upbjjList" :key="upbjj" :value="upbjj">{{ upbjj}}</option>
+            </select>
+        </div>
+
+        <div class="detailInformation">
+            <label for="lokasiRak">Lokasi Rak</label>
+            <input v-on:keyup.enter="saveModal" type="text" id="lokasiRak" v-model="modal.lokasiRak" />
+        </div>
+
+        <div class="detailInformation">
+            <label for="stok">Jumlah Stok Bahan Ajar</label>
+            <input v-on:keyup.enter="saveModal" :class="{ invalid: modal.qty < 0 }" type="number" id="stok"
+                v-model="modal.qty" min="0" />
+            <small v-if="modal.qty < 0" class="error-message"><i>Jumlah stok tidak boleh negatif</i></small>
+        </div>
+
+        <div class="detailInformation">
+            <label for="safety">Jumlah Stok Safety Bahan Ajar</label>
+            <input v-on:keyup.enter="saveModal" :class="{ invalid: modal.safety < 0 }" type="number" id="safety"
+                v-model="modal.safety" />
+            <small v-if="modal.safety < 0" class="error-message"><i>Jumlah stok safety tidak boleh
+                    negatif</i></small>
+        </div>
+
+        <div class="detailInformation">
+            <label for="harga">Harga</label>
+            <input v-on:keyup.enter="saveModal" :class="{ invalid: modal.harga < 0 }" type="number" id="harga"
+                v-model="modal.harga" />
+            <small v-if="modal.harga < 0" class="error-message"><i>Harga tidak boleh negatif</i></small>
+        </div>
+
+        <div class="detailInformation">
+            <label for="status">Status</label>
+            <input disabled type="text" id="status" v-model="modal.status" />
+        </div>
+
+        <div class="detailInformation">
+            <label for="catatan">Catatan</label>
+            <textarea v-on:keyup.enter="saveModal" id="catatan" v-model="modal.catatanHTML"></textarea>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <button class="buttonClose neobrutalism" style="background-color: var(--color-white) !important;"
+            @click="closeModal">Tutup</button>
+        <button class="buttonClose neobrutalism" @click="saveModal" v-if="(isCreate || isEdit)">Simpan</button>
+    </div>
+</div>
