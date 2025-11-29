@@ -43,3 +43,4 @@ p <- ggplot(data_plot, aes(x = pendapatan, y = kebahagiaan)) +
   theme_minimal()
 
 p
+
