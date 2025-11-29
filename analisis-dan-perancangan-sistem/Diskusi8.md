@@ -33,3 +33,4 @@ Kebutuhan operasional pada perusahaan ekspedisi berfokus pada memastikan bahwa s
 Sumber referensi:
 - BMP MSIM4302 Modul 9
 - Vikasari, C. (2018). Sistem Informasi Manajemen Pada Jasa Expedisi Pengiriman Barang Berbasis Web. JATISI (Jurnal Teknik Informatika Dan Sistem Informasi), 4(2), 123-132.
+- Juwariyah, S., Sufaidah, S., & Widya, M. A. A. (2021). Rancang bangun aplikasi tracking paket ekspedisi cv mk express. Komputika: Jurnal Sistem Komputer, 10(1), 29-41.
