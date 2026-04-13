@@ -37,8 +37,6 @@ server <- function(input, output) {
     req(input$file1)
     
     df <- readxl::read_excel(path = input$file1$datapath, skip = 1)
-    ext <- tools::file_ext(input$file1$datapath)
-    validate(need(ext == "xlsx", "Please upload a xlsx file"))
     
     return(df)
   })
@@ -72,36 +70,38 @@ server <- function(input, output) {
     
     req(input$kolom_dipilih)
     
-    req(input$kolom_dipilih_y)
-    
-    x_var <- input$kolom_dipilih
-    y_var <- input$kolom_dipilih_y
-    
-    if (input$jenis_plot == "line") {
-      if (!is.numeric(df[[x_var]])) {
-        df[[x_var]] <- factor(df[[x_var]], levels = unique(df[[x_var]]))
-      }
-      if (!is.numeric(df[[y_var]])) {
-        df[[y_var]] <- as.numeric(df[[y_var]])
-      }
-    }
-    
-    p <- ggplot(data = df, aes(x = .data[[x_var]], y = .data[[y_var]])) +
-        labs(title = paste(input$jenis_plot, "Plot: ", x_var, "vs", y_var),
-            x = x_var, 
-            y = y_var)
+    if (input$jenis_plot %in% c("scatter", "line", "bar")) {
+        req(input$kolom_dipilih_y)
         
-    if (input$jenis_plot == "scatter") {
-        p <- p + geom_point() # Scatter Plot
-    } else if (input$jenis_plot == "line") {
-        p <- p + geom_line()  # Line Plot
-    } else if (input$jenis_plot == "bar") {
-      p <- p + geom_col()  # Bar Plot
+        x_var <- input$kolom_dipilih
+        y_var <- input$kolom_dipilih_y
+        
+        if (input$jenis_plot == "line") {
+          if (!is.numeric(df[[x_var]])) {
+            df[[x_var]] <- factor(df[[x_var]], levels = unique(df[[x_var]]))
+          }
+          if (!is.numeric(df[[y_var]])) {
+            df[[y_var]] <- as.numeric(df[[y_var]])
+          }
+        }
+        
+        p <- ggplot(data = df, aes(x = .data[[x_var]], y = .data[[y_var]])) +
+            labs(title = paste(input$jenis_plot, "Plot: ", x_var, "vs", y_var),
+                x = x_var, 
+                y = y_var)
+            
+        if (input$jenis_plot == "scatter") {
+            p <- p + geom_point() # Scatter Plot
+        } else if (input$jenis_plot == "line") {
+            p <- p + geom_line()  # Line Plot
+        } else if (input$jenis_plot == "bar") {
+          p <- p + geom_col()  # Bar Plot
+        }
+        
+        p <- p + theme_minimal()
+        
+        return(p)
     }
-    
-    p <- p + theme_minimal()
-    
-    return(p)
   })
   
   # untuk x
