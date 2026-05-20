@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class Tugas1 {
+public class Main {
 
     enum Kategori {
         MAKANAN,
@@ -265,7 +265,7 @@ public class Tugas1 {
         System.out.println("===========================");
         System.out.println("Pesanan Selesai, tekan enter untuk lanjut ke menu sebelumnya");
         System.out.println("===========================");
-        scanner.nextLine();
+        sc.nextLine();
 
     }
 
