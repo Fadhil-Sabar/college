@@ -10,4 +10,7 @@ Sila Persatuan Indonesia memastikan AI memperkuat persatuan sosial, bukan mencip
 
 Sila Kerakyatan menghendaki transparansi dan partisipasi publik dalam tata kelola AI, sedangkan Sila Keadilan Sosial menuntut pemerataan manfaat AI bagi seluruh rakyat Indonesia.
 
-Sedangkan dalam konteks pengembangan ilmu
+Sedangkan dalam konteks pengembangan ilmu berarti memberikan dasar dasar nilai Pancasila sebagai konsep pengembangan ilmu. Paradigma Pancasila sebagai dasar pengembangan ilmu diperlukan karena beberapa alasan, yaitu:
+
+- Perubahan cara berpikir manusia menjadi sangat berubah karena perkembangan teknologi, sehingga diperlukan pemikiran sungguh sungguh agar bangsa Indonesia terhindar dari nilai nilai yang tidak sesuai dengan Pancasila.
+- Dengan majunya ilmu pengetahuan dan teknologi memberikan dampak megatif terhadap lingkungan. Sehingga Pancasila harus ditampilkan untuk menentukan arah berkembangnya ilmu pengetahuan di Indonesia. 
