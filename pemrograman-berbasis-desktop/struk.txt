@@ -1,0 +1,5 @@
+Nasi Goreng,2,24000
+Es Teh,10,30000
+Diskon,20.0,10800
+Subtotal,54000
+Total,43200

@@ -1,0 +1,8 @@
+Makanan,Nasi Goreng,12000.0,Makanan Berat,Menu Spesial
+Minuman,Es Teh,3000.0,Minuman Segar,Teh
+Makanan,Ayam Bakar,15000.0,Makanan Berat,Lalapan
+Minuman,Es Jeruk,4000.0,Minuman Segar,Jeruk
+Diskon,Diskon Akhir Bulan,10.0
+Makanan,Ayam Gepuk,20000.0,Makanan Berat,Makanan Berat
+Diskon,Diskon idul adha,20.0
+Makanan,Lele Goreng,20000.0,Makanan Berat,Makanan Berat
