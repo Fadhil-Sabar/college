@@ -1,0 +1,7 @@
+{
+  "name": "cryptocurrency",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
