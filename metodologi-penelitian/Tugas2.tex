@@ -1,0 +1,349 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=4cm,right=3cm]{geometry}
+
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% HALAMAN JUDUL (cover) -- sesuai template gambar
+% ------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+
+{\large\bfseries Tugas 1}\par
+\vspace{0.4em}
+{\large\bfseries STSI4310 - Metodologi Penelitian}\par
+
+\vfill
+
+{\large\bfseries Akurasi dan Efisiensi Penyimpanan Memori Agen Pi\\
+melalui Evaluasi Komparatif\\
+Gate Klasifikasi Terkalibrasi}\par
+
+\vfill
+
+\includegraphics[width=5.2cm]{media/logo-universitas-terbuka.png}\par
+
+\vfill
+
+{\large\bfseries Fadhil Andriawan - 053497355}\par
+
+\vfill
+
+{\large\bfseries Program Studi Sistem Informasi}\par
+\vspace{0.3em}
+{\large\bfseries Fakultas Sains dan Teknologi}\par
+\vspace{0.3em}
+{\large\bfseries Universitas Terbuka}\par
+\vspace{0.3em}
+{\large\bfseries 2026}\par
+
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\begin{center}
+\textbf{DAFTAR ISI}\label{sec:daftar-isi}
+\end{center}
+\vspace{1.5em}
+
+\noindent\textbf{DAFTAR ISI}\dotfill\textbf{\pageref{sec:daftar-isi}}\par
+\vspace{0.6em}
+\noindent\textbf{BAB I PENDAHULUAN}\dotfill\textbf{\pageref{sec:bab1}}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}1.1 Latar Belakang Masalah\dotfill\pageref{sec:1.1}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}1.2 Rumusan Masalah\dotfill\pageref{sec:1.2}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}1.3 Tujuan Penelitian\dotfill\pageref{sec:1.3}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}1.4 Manfaat Penelitian\dotfill\pageref{sec:1.4}\par
+\vspace{0.6em}
+\noindent\textbf{BAB II KAJIAN PUSTAKA DAN LANDASAN TEORI}\dotfill\textbf{\pageref{sec:bab2}}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}2.1 Kajian Pustaka dan Landasan Teori\dotfill\pageref{sec:2.1}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}2.2 Pertanyaan Penelitian dan Hipotesis\dotfill\pageref{sec:2.2}\par
+\vspace{0.6em}
+\noindent\textbf{BAB III METODE PENELITIAN}\dotfill\textbf{\pageref{sec:bab3}}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}3.1 Metode Penelitian\dotfill\pageref{sec:3.1}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}3.2 Teknik Pengumpulan Data dan Instrumen Penelitian\dotfill\pageref{sec:3.2}\par
+\vspace{0.6em}
+\noindent\textbf{BAB IV ANALISIS DATA DAN KESIMPULAN SEMENTARA}\dotfill\textbf{\pageref{sec:bab4}}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}4.1 Teknik Analisis Data Penelitian\dotfill\pageref{sec:4.1}\par
+\vspace{0.2em}
+\noindent\hspace*{1.5em}4.2 Kesimpulan Sementara dan Batasan Penelitian\dotfill\pageref{sec:4.2}\par
+\vspace{0.6em}
+\noindent\textbf{DAFTAR PUSTAKA}\dotfill\textbf{\pageref{sec:daftar-pustaka}}\par
+
+\clearpage
+\pagenumbering{arabic}
+
+\textbf{BAB I PENDAHULUAN}\label{sec:bab1}
+
+\textbf{1.1 Latar Belakang Masalah}\label{sec:1.1}
+
+Coding agent seperti Pi bekerja dalam sesi. Ketika sesi berakhir, konteks seperti preferensi pengguna, konvensi repositori, keputusan arsitektur, kegagalan tool, dan pekerjaan yang belum selesai tidak selalu tersedia pada sesi berikutnya. Akibatnya, pengguna perlu menjelaskan kembali informasi yang sama dan agen berpotensi mengulang kesalahan sebelumnya. Extension \emph{pi-memory} dan \emph{pi-hermes-memory} menyediakan memori lintas sesi untuk membantu mengatasi masalah tersebut (chandra447, 2026; jayzeng, 2026).
+
+\emph{pi-memory} menggunakan berkas markdown, log harian, scratchpad, dan pencarian semantik opsional. Extension ini menyediakan tool \texttt{memory\_write} untuk menulis entri memori (jayzeng, 2026). Sementara itu, \emph{pi-hermes-memory} menyediakan memori berkategori, pencarian SQLite FTS5, pemindaian rahasia, dan skills prosedural. Extension ini juga menggunakan model generatif untuk meninjau percakapan dan menghasilkan operasi pembaruan memori (chandra447, 2026). Penelitian ini berfokus pada keputusan tentang informasi yang layak disimpan sebelum memori ditulis.
+
+Dokumentasi \emph{pi-hermes-memory} menyebutkan bahwa review latar belakang secara bawaan dilakukan setiap 10 turn atau 15 tool call, dengan kedua penghitung direset setelah review. Review tersebut menggunakan panggilan model generatif untuk memeriksa percakapan dan menyusun memori (chandra447, 2026). Ketentuan ini menunjukkan bahwa proses penilaian dapat berulang selama sesi berlangsung. Besaran token, biaya, dan latensi proses tersebut tetap perlu diukur karena bergantung pada konfigurasi dan panjang konteks yang dinilai.
+
+Penyatuan penilaian kelayakan dan penulisan entri menimbulkan persoalan efisiensi serta keandalan keputusan. Penilaian melalui model generatif membutuhkan token konteks, meskipun kandidat informasi akhirnya ditolak. Jika model menggunakan sampling, keputusan untuk masukan yang sama juga dapat berbeda. Konsistensi keputusan dan kalibrasi perlu dinilai secara terpisah. Konsistensi berkaitan dengan kestabilan keputusan pada pengulangan, sedangkan kalibrasi berkaitan dengan kesesuaian nilai keyakinan dan proporsi keputusan yang benar (Guo et al., 2017). Kalibrasi tidak otomatis menjamin keputusan yang selalu sama.
+
+Command Code menjadi contoh pemisahan penilaian dan penulisan dalam pengelolaan preferensi pengguna. Menurut dokumentasinya, model neuro-simbolik menilai sinyal preferensi, menentukan kategori dan tingkat keyakinan, serta menandai konflik. Model generatif digunakan untuk membaca sinyal dan menulis hasilnya sebagai markdown (Command Code, 2026). Rancangan ini menunjukkan bahwa kedua peran dapat dijalankan oleh komponen yang berbeda. Penghematan biaya dan mutu keputusan pada memori sesi coding agent masih perlu diuji.
+
+Penelitian memori agen membahas \emph{write-side control}, yaitu kendali yang menentukan informasi yang diterima sebelum masuk ke memori. Komponen yang menjalankan keputusan ini disebut gate. Penelitian tentang kebaruan informasi memisahkan kandidat yang jelas baru, kandidat yang berulang, dan kandidat ambigu yang memerlukan pemeriksaan model generatif (Wang et al., 2026). Penelitian tersebut menunjukkan bahwa keputusan penyimpanan dapat dievaluasi sebagai komponen tersendiri.
+
+Penelitian ini berfokus pada tiga kebutuhan evaluasi dalam konteks coding agent. Pertama, kesesuaian data. Maharana et al. (2024) menggunakan percakapan jangka panjang dengan rata-rata 300 turn dan sekitar 9.000 token per percakapan, yang mencakup hingga 35 sesi. Data tersebut menunjukkan perbedaan konteks dengan sesi pemrograman yang memuat keputusan teknis, konvensi repositori, kegagalan tool, dan koreksi pengguna. Karena itu, penelitian ini memerlukan data yang mewakili kandidat memori dari sesi coding agent.
+
+Kedua, keputusan menerima atau menolak kandidat memori perlu dinilai sebagai tugas klasifikasi tersendiri. Evaluasi ini membutuhkan data berlabel, pedoman anotasi, dan laporan kesepakatan antara annotator agar dasar penilaian kelayakan informasi dapat diperiksa. Ketiga, nilai keyakinan gate perlu diuji sebelum digunakan sebagai dasar ambang keputusan. Guo et al. (2017) menunjukkan bahwa modern neural dapat memiliki kalibrasi yang buruk dan kalibrasi post-hoc seperti \emph{temperature scaling} dapat memperbaiki kalibrasi prediksi. Sehingga kelayakan penyimpanan memori coding agent perlu diuji secara khusus.
+
+Berdasarkan permasalahan tersebut, penelitian ini menguji pemisahan penilaian kelayakan dari penulisan memori pada coding agent Pi. Penelitian ini membandingkan gate klasifikasi terkalibrasi dengan mekanisme penilaian kelayakan penyimpanan pada pi-memory dan pi-hermes-memory. Evaluasi mencakup akurasi keputusan, penggunaan token, biaya, dan latensi, serta kalibrasi nilai keyakinan gate.
+
+Penelitian ini juga menguji \emph{band ketidakpastian}, yaitu rentang probabilitas kelayakan penyimpanan yang memerlukan pemeriksaan LLM. Kandidat memori di luar rentang tersebut diputuskan secara otomatis oleh gate. Evaluasi menilai pengurangan panggilan LLM dan mutu memori. Model generatif tetap digunakan untuk menulis entri yang diterima.
+
+
+Penelitian ini berada dalam ruang lingkup Sistem Informasi karena membahas perancangan dan evaluasi komponen sistem berbasis kecerdasan artifisial, khususnya kendali pada jalur tulis memori agen dan pengaruhnya terhadap biaya operasional serta mutu informasi yang disimpan.
+
+\textbf{1.2 Rumusan Masalah}\label{sec:1.2}
+
+Rumusan masalah penelitian ini disusun dalam bentuk pertanyaan
+penelitian sebagai berikut.
+
+\begin{quote}
+1. Bagaimana akurasi keputusan gate klasifikasi terkalibrasi dibandingkan dengan mekanisme penyimpanan pada pi-memory dan pi-hermes-memory?
+
+2. Apakah probabilitas yang dihasilkan gate terkalibrasi dan dapat digunakan untuk menentukan keputusan?
+
+3. Bagaimana perbandingan penggunaan token, biaya, dan latensi per operasi tulis antara mekanisme yang diusulkan, pi-memory, dan pi-hermes-memory?
+
+4. Apakah \textit{band} ketidakpastian mengurangi panggilan LLM dengan tetap menjaga mutu memori dan akurasi jawaban pada sesi lanjutan?
+
+\end{quote}
+
+\textbf{1.3 Tujuan Penelitian}\label{sec:1.3}
+
+Penelitian ini bertujuan mengimplementasikan gate klasifikasi terkalibrasi
+pada jalur tulis memori Pi dengan memisahkan penilaian kelayakan dan
+penulisan entri. Tujuan evaluasinya adalah sebagai berikut.
+
+\begin{quote}
+1. Membandingkan akurasi keputusan gate dengan mekanisme penyimpanan
+pada pi-memory dan pi-hermes-memory menggunakan dataset berlabel
+dari sesi coding agent.
+
+2. Menilai kalibrasi probabilitas gate dan kelayakannya sebagai dasar
+penentuan ambang keputusan.
+
+3. Membandingkan penggunaan token, biaya, dan latensi per operasi tulis
+antara mekanisme yang diusulkan, pi-memory, dan pi-hermes-memory.
+
+4. Menguji pengaruh \emph{band ketidakpastian} terhadap jumlah panggilan
+LLM, mutu memori, dan akurasi jawaban pada sesi lanjutan.
+\end{quote}
+
+\textbf{1.4 Manfaat Penelitian}\label{sec:1.4}
+
+\textbf{Manfaat teoritis.} Penelitian ini menambah pemahaman tentang
+penerapan gate klasifikasi terkalibrasi dalam menilai kelayakan
+penyimpanan memori sesi coding agent.
+
+\textbf{Manfaat praktis.} Hasil penelitian dapat membantu pengguna
+ekosistem Pi memilih mekanisme penyimpanan memori berdasarkan akurasi
+keputusan, penggunaan token, biaya, dan latensi per operasi tulis.
+
+\textbf{Manfaat metodologis.} Penelitian ini menyediakan protokol
+evaluasi gate memori yang mencakup data berlabel, kesepakatan
+antarannotator, kalibrasi, dan pengujian mutu memori pada sesi lanjutan.
+
+\clearpage
+\textbf{BAB II KAJIAN PUSTAKA DAN LANDASAN TEORI}\label{sec:bab2}
+
+\textbf{2.1 Kajian Pustaka dan Landasan Teori}\label{sec:2.1}
+
+\textbf{Memori lintas sesi pada coding agent}
+
+Memori lintas sesi menyimpan informasi yang dapat membantu agen pada pekerjaan berikutnya, seperti preferensi pengguna, konvensi repositori, keputusan arsitektur, dan pelajaran dari kegagalan tool. Dokumentasi \emph{pi-memory} menjelaskan penyimpanan melalui berkas markdown, log harian, scratchpad, serta tool \texttt{memory\_write} (jayzeng, 2026). Sementara itu, \emph{pi-hermes-memory} menggunakan memori berkategori dan review percakapan untuk menghasilkan pembaruan memori (chandra447, 2026).
+
+Penelitian ini berfokus pada memori jangka panjang. Informasi dinilai layak disimpan jika mempunyai dasar dalam percakapan atau hasil pekerjaan, sesuai dengan cakupan pengguna atau proyek, dan berguna untuk sesi berikutnya. Informasi sementara tetap dapat digunakan dalam konteks aktif atau log.
+
+\textbf{Penilaian kelayakan dan kendali jalur tulis memori}
+
+Kendali jalur tulis memori atau \emph{write-side control} menentukan tindakan terhadap informasi sebelum disimpan. SAGE menilai apakah informasi sudah tercakup dalam memori melalui estimator kepadatan berbasis distribusi von Mises--Fisher pada embedding. Informasi yang jelas belum tercakup ditambahkan, informasi berulang diabaikan, dan kasus yang belum jelas diperiksa oleh LLM (Wang et al., 2026).
+
+Informasi yang belum tersimpan belum tentu berguna untuk jangka panjang. Koreksi terhadap keputusan lama juga dapat tetap penting meskipun teksnya mirip dengan memori sebelumnya. Karena itu, penilaian kelayakan mempertimbangkan kegunaan informasi dan konteksnya. Command Code Taste juga memisahkan penilaian preferensi dari penulisan hasil oleh LLM, tetapi penghematan pada Pi tetap perlu diuji (Command Code, 2026).
+
+\textbf{Klasifikasi kelayakan penyimpanan}
+
+Kelayakan penyimpanan dinilai melalui klasifikasi biner. Kelas positif menunjukkan informasi yang layak masuk ke memori jangka panjang, sedangkan kelas negatif menunjukkan informasi yang tidak perlu disimpan di sana. Label acuan disusun melalui pedoman anotasi, dan kesepakatan antarannotator diperiksa untuk menilai konsistensi pelabelan. Ketepatan gate diukur menggunakan akurasi, precision, recall, dan F1 agar kesalahan menerima maupun menolak informasi dapat diketahui.
+
+\textbf{Kalibrasi probabilitas gate}
+
+Kalibrasi menunjukkan kesesuaian probabilitas prediksi dengan hasil yang diamati. Model dengan akurasi tinggi belum tentu menghasilkan probabilitas yang terkalibrasi (Guo et al., 2017). Karena itu, ketepatan kelas dan mutu probabilitas dinilai secara terpisah.
+
+Guo et al. (2017) menggunakan reliability diagram, \emph{Expected Calibration Error} (ECE), dan \emph{negative log-likelihood} (NLL) untuk mengevaluasi kalibrasi. ECE mengukur ketidaksesuaian probabilitas dengan hasil pengamatan. Salah satu metode yang dibahas adalah \emph{temperature scaling}, dengan parameter yang disesuaikan menggunakan data validasi. Metode ini mengubah probabilitas tanpa mengubah kelas yang dipilih, sehingga perbaikan kalibrasi tidak otomatis meningkatkan akurasi klasifikasi.
+
+\textbf{Band ketidakpastian dan pemeriksaan LLM}
+
+Band ketidakpastian digunakan untuk meneruskan kandidat ke LLM ketika keluaran gate belum cukup meyakinkan. SAGE mengalihkan kasus yang belum jelas berdasarkan penilaian apakah informasi sudah tercakup dalam memori (Wang et al., 2026). Dalam penelitian ini, pengalihan direncanakan berdasarkan probabilitas kelayakan penyimpanan. Penentuan ambang dan rentangnya dijelaskan pada bagian metode penelitian. Pengurangan panggilan LLM dinilai bersama kesalahan keputusan dan mutu memori.
+
+\textbf{Evaluasi efisiensi dan mutu memori}
+
+Efisiensi dinilai melalui penggunaan token, biaya, dan latensi. Pengukuran mencakup ekstraksi kandidat, komputasi gate, pemeriksaan LLM, serta penulisan entri. Biaya untuk kandidat yang akhirnya ditolak tetap dihitung. Perbandingan menggunakan definisi operasi tulis yang sama dan mencatat perbedaan konfigurasi kedua baseline, termasuk review berkala pada \emph{pi-hermes-memory} (jayzeng, 2026; chandra447, 2026).
+
+Maharana et al. (2024) mengevaluasi penggunaan memori percakapan melalui beberapa tugas, termasuk question answering. Dalam penelitian ini, mutu memori diuji melalui ketepatan jawaban sesi lanjutan tentang keputusan teknis, konvensi repositori, dan koreksi pengguna yang tersedia dalam histori.
+
+\textbf{Posisi penelitian}
+
+SAGE telah membahas pemisahan sebagian keputusan penyimpanan dari pemeriksaan LLM (Wang et al., 2026). Penelitian ini berfokus pada evaluasi komparatif gate klasifikasi terkalibrasi pada coding agent Pi, dengan menilai ketepatan keputusan, mutu probabilitas, efisiensi, dan penggunaan memori pada sesi lanjutan.
+
+\textbf{2.2 Pertanyaan Penelitian dan Hipotesis}\label{sec:2.2}
+
+Pertanyaan penelitian mengikuti rumusan masalah pada BAB I. Hipotesis berikut merupakan dugaan yang akan diuji menggunakan data yang tidak digunakan untuk pelatihan atau penyesuaian kalibrasi.
+
+\textbf{Pertanyaan penelitian 1}
+
+Bagaimana akurasi keputusan gate klasifikasi terkalibrasi dibandingkan dengan mekanisme penyimpanan pada \emph{pi-memory} dan \emph{pi-hermes-memory}?
+
+\textbf{Hipotesis 1.} Terdapat perbedaan ketepatan keputusan kelayakan penyimpanan antara gate klasifikasi terkalibrasi dan kedua baseline. Perbandingan menggunakan label acuan yang sama melalui akurasi, precision, recall, dan F1.
+
+\textbf{Pertanyaan penelitian 2}
+
+Apakah probabilitas yang dihasilkan gate terkalibrasi dan dapat digunakan untuk menentukan keputusan?
+
+\textbf{Hipotesis 2.} Kalibrasi post-hoc membuat probabilitas gate lebih sesuai dengan hasil pada data acuan, ditunjukkan oleh penurunan ECE dibandingkan sebelum kalibrasi. Kegunaan probabilitas tersebut untuk menentukan keputusan otomatis dinilai bersama tingkat kesalahan gate.
+
+\textbf{Pertanyaan penelitian 3}
+
+Bagaimana perbandingan penggunaan token, biaya, dan latensi per operasi tulis antara mekanisme yang diusulkan, \emph{pi-memory}, dan \emph{pi-hermes-memory}?
+
+\textbf{Hipotesis 3.} Gate dengan pemeriksaan LLM selektif menurunkan penggunaan token LLM dan biaya operasional per operasi tulis dibandingkan baseline, setelah memperhitungkan komputasi tambahan gate. Latensi dinilai tersendiri karena pengurangan panggilan LLM belum tentu mempercepat seluruh operasi.
+
+\textbf{Pertanyaan penelitian 4}
+
+Apakah band ketidakpastian mengurangi panggilan LLM dengan tetap menjaga mutu memori dan akurasi jawaban pada sesi lanjutan?
+
+\textbf{Hipotesis 4.} Band ketidakpastian mengurangi panggilan LLM untuk penilaian kelayakan, sementara mutu memori dan akurasi jawaban sesi lanjutan tidak menurun melebihi batas yang ditetapkan sebelum pengujian. Dengan demikian, penghematan dinilai bersama kemampuan agen menggunakan informasi yang diperlukan.
+
+
+\clearpage
+\textbf{BAB III METODE PENELITIAN}\label{sec:bab3}
+
+\textbf{3.1 Metode Penelitian}\label{sec:3.1}
+
+\textbf{3.2 Teknik Pengumpulan Data dan Instrumen Penelitian}\label{sec:3.2}
+
+\clearpage
+\textbf{BAB IV ANALISIS DATA DAN KESIMPULAN SEMENTARA}\label{sec:bab4}
+
+\textbf{4.1 Teknik Analisis Data Penelitian}\label{sec:4.1}
+
+\textbf{4.2 Kesimpulan Sementara dan Batasan Penelitian}\label{sec:4.2}
+
+\clearpage
+\textbf{DAFTAR PUSTAKA}\label{sec:daftar-pustaka}
+
+\begin{list}{}{%
+  \setlength{\leftmargin}{0.5in}%
+  \setlength{\itemindent}{-0.5in}%
+  \setlength{\itemsep}{0.5\baselineskip}%
+  \setlength{\parsep}{0pt}%
+}
+\item chandra447. (2026). \emph{Pi Hermes Memory} [Dokumentasi perangkat lunak].
+GitHub. \url{https://github.com/chandra447/pi-hermes-memory}
+\newline Diakses tanggal 30 September 2026.
+
+\item Command Code. (2026). \emph{Taste}. Command Code Docs.
+\url{https://commandcode.ai/docs/taste}
+\newline Diakses tanggal 30 September 2026.
+
+\item Guo, C., Pleiss, G., Sun, Y., \& Weinberger, K. Q. (2017). On
+calibration of modern neural networks. Dalam D. Precup \& Y. W. Teh (Eds.),
+\emph{Proceedings of the 34th International Conference on Machine Learning}
+(Vol. 70, hlm. 1321--1330). PMLR.
+\url{https://proceedings.mlr.press/v70/guo17a.html}
+
+\item jayzeng. (2026). \emph{pi-memory} [Dokumentasi perangkat lunak]. GitHub.
+\url{https://github.com/jayzeng/pi-memory}
+\newline Diakses tanggal 30 September 2026.
+
+\item Maharana, A., Lee, D.-H., Tulyakov, S., Bansal, M., Barbieri, F., \&
+Fang, Y. (2024). \emph{Evaluating very long-term conversational memory of LLM
+agents} (arXiv:2402.17753) [Preprint]. arXiv.
+\url{https://arxiv.org/abs/2402.17753}
+
+\item Wang, S., Brahma, D., \& Henao, R. (2026). \emph{SAGE: A novelty gate for
+efficient memory evolution in agentic LLMs} (arXiv:2605.30711) [Preprint]. arXiv.
+\url{https://arxiv.org/abs/2605.30711v2}
+\end{list}
+
+\end{document}

@@ -1,0 +1,465 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=4cm,right=3cm]{geometry}
+
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% HALAMAN JUDUL (cover) -- sesuai template gambar
+% ------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+
+{\large\bfseries Tugas 1}\par
+\vspace{0.4em}
+{\large\bfseries STSI4310 - Metodologi Penelitian}\par
+
+\vfill
+
+{\large\bfseries Gate Klasifikasi Terkalibrasi sebagai Kendali Tulis\\
+Memori Agen Pi. Akurasi, Kalibrasi, dan Biaya}\par
+
+\vfill
+
+\includegraphics[width=5.2cm]{media/logo-universitas-terbuka.png}\par
+
+\vfill
+
+{\large\bfseries Fadhil Andriawan - 053497355}\par
+
+\vfill
+
+{\large\bfseries Program Studi Sistem Informasi}\par
+\vspace{0.3em}
+{\large\bfseries Fakultas Sains dan Teknologi}\par
+\vspace{0.3em}
+{\large\bfseries Universitas Terbuka}\par
+\vspace{0.3em}
+{\large\bfseries 2026}\par
+
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\textbf{DAFTAR ISI}
+
+\textbf{DAFTAR ISI i}
+
+\textbf{BAB I PENDAHULUAN 1}
+
+\begin{quote}
+1.1 Latar Belakang Masalah 1
+
+1.2 Rumusan Masalah 4
+
+1.3 Tujuan Penelitian 5
+
+1.4 Manfaat Penelitian 6
+\end{quote}
+
+\textbf{BAB II KAJIAN PUSTAKA DAN LANDASAN TEORI 7}
+
+\begin{quote}
+2.1 Kajian Pustaka dan Landasan Teori 7
+
+2.2 Pertanyaan Penelitian dan Hipotesis 7
+\end{quote}
+
+\textbf{BAB III METODE PENELITIAN 8}
+
+\begin{quote}
+3.1 Metode Penelitian 8
+
+3.2 Teknik Pengumpulan Data dan Instrumen Penelitian 8
+\end{quote}
+
+\textbf{BAB IV ANALISIS DATA DAN KESIMPULAN SEMENTARA 9}
+
+\begin{quote}
+4.1 Teknik Analisis Data Penelitian 9
+
+4.2 Kesimpulan Sementara dan Batasan Penelitian 9
+\end{quote}
+
+\textbf{DAFTAR PUSTAKA 10}
+
+\clearpage
+\pagenumbering{arabic}
+
+\textbf{BAB I PENDAHULUAN}
+
+\textbf{1.1 Latar Belakang Masalah}
+
+Coding agent seperti Pi bekerja per sesi. Ketika sesi ditutup, konteks
+yang sudah terbangun di dalamnya ikut hilang. Konteks ini mencakup
+preferensi pengguna,
+konvensi repositori, keputusan arsitektur yang pernah diambil, kegagalan
+tool yang pernah terjadi, dan pekerjaan yang belum selesai. Kehilangan
+konteks ini bukan sekadar menimbulkan ketidaknyamanan. Pada setiap sesi
+baru, pengguna harus mengulang penjelasan yang sama dan agen mengulang
+kesalahan yang sama. Ekosistem Pi menjawab masalah tersebut melalui
+extension memori yang menyimpan pengetahuan lintas sesi. Contohnya
+adalah \emph{pi-memory} dan \emph{pi-hermes-memory}. \emph{pi-memory}
+menyimpan memori dalam berkas markdown, log harian, dan scratchpad,
+dengan pencarian semantik opsional. Sementara itu, \emph{pi-hermes-memory}
+merupakan hasil port dari agen Hermes yang menyimpan memori berkategori
+dengan pencarian SQLite FTS5, pemindaian rahasia, dan skills prosedural
+(Dokumentasi paket \emph{pi-memory} dan \emph{pi-hermes-memory}, 2026).
+Keduanya adalah contoh perangkat lunak yang perilakunya berubah karena
+data yang disimpannya sendiri. Karena itu, mutu keputusan penyimpanan menjadi
+bagian dari mutu sistem.
+
+Persoalan yang diangkat dalam penelitian ini bukan kemampuan menyimpan
+memori, melainkan cara keputusan penulisan diambil. Kedua extension
+tersebut menjalankan dua peran berbeda dengan satu model generatif yang
+sama. Model tersebut menilai apakah suatu informasi layak diingat, lalu
+merumuskan teks entri memori yang disimpan. \emph{pi-hermes-memory}
+menjalankan review di latar belakang setiap 10 turn atau 15 tool call, mendeteksi
+koreksi pengguna, lalu menulis entri melalui side-channel di dalam
+proses. \emph{pi-memory} mengekspor ringkasan pada peristiwa compaction
+dan menyediakan tool tulis yang dipanggil model. Penyatuan dua peran
+dalam satu model generatif ini menimbulkan dua konsekuensi yang dapat diukur.
+
+Konsekuensi pertama adalah biaya. Setiap penilaian kelayakan membutuhkan
+panggilan model generatif penuh. Panggilan tersebut terjadi berulang kali
+sepanjang sesi, terlepas dari ada atau tidaknya informasi yang benar-benar
+layak disimpan. Penilaian juga menggunakan jendela konteks karena riwayat
+yang sedang dinilai harus disertakan. Sebagai pembanding, model
+keputusan terstruktur seperti Jev dari TypeSafe AI menerima state dan
+peta pertanyaan, lalu mengembalikan tiga jenis nilai dengan tipe yang
+ditentukan, yaitu
+\emph{choice} (memilih satu label), \emph{score} (skala terurut), dan
+\emph{noul} (probabilitas untuk jawaban ya atau tidak). Ketiga jenis nilai
+tersebut dikembalikan dalam satu round trip dengan latensi puluhan sampai
+ratusan milidetik. Kisaran harga masukannya adalah 0,42 dolar per juta
+token atau sekitar 0,001 dolar per keputusan, dengan konteks maksimum
+64 ribu token (TypeSafe AI, 2026). Perbedaan besaran biaya dan latensi
+tersebut menjadi alasan untuk menguji pemisahan peran.
+
+Konsekuensi kedua adalah kesulitan mereproduksi hasil dan ketidakpastian
+yang tidak terukur. Model generatif yang diminta menilai kelayakan
+memberikan jawaban berbeda untuk masukan yang sama. Angka keyakinan yang
+dilaporkannya ditulis sebagai bagian dari teks, bukan dihasilkan sebagai
+nilai probabilitas. Akibatnya, dua hal yang seharusnya dapat dipisahkan
+menjadi tercampur. Perubahan mutu memori tidak dapat dibedakan dari
+variasi sampling model. Selain itu, ambang keputusan tidak dapat dipilih
+dengan dasar yang dapat dipertanggungjawabkan karena angka yang digunakan
+tidak bermakna secara statistik. Dokumentasi Jev mengingatkan bahwa nilai
+keyakinan menunjukkan seberapa terkonsentrasi jawaban, bukan jaminan
+kebenaran. Dokumentasi tersebut juga menyarankan kalibrasi ambang
+menggunakan data berlabel milik pengguna (TypeSafe AI, 2026). Peringatan
+ini menjadi dasar salah satu pertanyaan penelitian, bukan asumsi bahwa
+nilai keyakinan tersebut sudah terkalibrasi.
+
+Di sisi industri, pemisahan peran tersebut sudah ditunjukkan sebagai
+arah pengembangan yang masuk akal. Command Code menggunakan model
+neuro-simbolik taste-1 yang bukan model generatif. Model ini menerima
+sinyal terstruktur berupa accept, reject, dan diff koreksi, lalu
+menilai apakah sinyal tersebut menunjukkan preferensi yang nyata.
+Model ini juga menentukan kategori yang sesuai dan tingkat keyakinannya.
+Lapisan simboliknya
+memelihara daftar kategori tetap dan menandai konflik alih-alih menimpa
+preferensi lama. Sementara itu, model generatif hanya digunakan untuk
+membaca sinyal dan menuliskan hasilnya sebagai markdown
+(Command Code, 2026). Klaim yang mendasari rancangan tersebut adalah
+bahwa keputusan deterministik dengan keyakinan terkalibrasi lebih dapat
+dipercaya daripada angka keyakinan yang dikarang oleh model generatif.
+
+Di sisi akademik, kendali pada sisi tulis atau write-side control sudah
+berkembang menjadi subbidang tersendiri, bukan lagi sekadar pelengkap retrieval.
+SAGE merumuskan evolusi memori sebagai masalah deteksi kebaruan dan
+menggunakan gate tertutup tanpa panggilan model generatif untuk memisahkan
+fakta baru, fakta redundan, dan kasus ambigu yang kemudian diteruskan ke model
+generatif (Wang dkk., 2026). ConsistencyGate merumuskan admission
+sebagai masalah kebenaran, bukan kegunaan, dan menambahkan benchmark uji
+kontaminasi memori (Zhang \& Li, 2026). A-MEM memformalkan admission
+sebagai gate terpisah dengan skor kegunaan hasil pembelajaran (Xu dkk.,
+2025). Perkembangan tersebut menunjukkan bahwa keputusan penulisan
+merupakan sumber biaya sekaligus sumber kegagalan jangka panjang.
+Fakta yang salah dan lolos dari gate akan terus digunakan sebagai premis
+pada langkah berikutnya.
+
+Namun, tiga celah penelitian masih terbuka. Pertama, celah konteks.
+Benchmark memori
+jangka panjang yang mapan, seperti LoCoMo (Maharana dkk., 2024),
+LongMemEval (Wu dkk., 2025), dan MemBench (MemBench, 2025), bertumpu
+pada percakapan chat atau interaksi pengguna dengan asisten. Memori
+kerja coding agent memiliki distribusi yang berbeda. Isinya mencakup keputusan
+teknis, konvensi repositori, kegagalan tool, dan koreksi atas keluaran
+model. LongMemEval-V2 mulai mengkaji memori pengalaman agen, tetapi
+berfokus pada pengetahuan lingkungan agen web, bukan sesi
+pemrograman (Wu dkk., 2026). Kedua, celah evaluasi. Evaluasi penolakan
+pada saat penulisan atau write-time rejection sebagai keputusan
+tersendiri masih jarang dilakukan, terutama dengan ground truth berlabel
+dan laporan kesepakatan antara annotator. Penelitian write-time trust
+gating menyusun 113 kasus berlabel dan 12 mode kegagalan serta melaporkan
+Cohen\textquotesingle s kappa 0,475. Penelitian tersebut bahkan menyatakan
+celah ini sebagai kontribusi utamanya (TIMPS Research, 2026). Ketiga, celah instrumen dan
+kalibrasi. Gate yang sudah ada dievaluasi berdasarkan akurasi atau
+penghematan biaya, tetapi jarang dievaluasi dari segi kalibrasi.
+Padahal, dua gate yang sama-sama akurat dapat memiliki nilai kegunaan
+yang berbeda ketika keyakinannya digunakan sebagai dasar ambang keputusan.
+Gate dengan keyakinan berlebih akan meloloskan kasus yang seharusnya
+dieskalasi. Literatur kalibrasi modern menunjukkan bahwa jaringan saraf
+modern cenderung terlalu percaya diri. Kalibrasi post-hoc, seperti
+temperature scaling, dapat memperbaikinya tanpa mengubah prediksi
+(Guo dkk., 2017). Karena itu, perbandingan antara classifier terlatih dan
+model yang dilatih untuk terkalibrasi menjadi tidak adil jika classifier
+terlatih tidak diberi kesempatan menjalani kalibrasi post-hoc. Rancangan
+penelitian ini menjaga keadilan perbandingan tersebut.
+
+Dengan demikian, pertanyaan yang diajukan penelitian ini bersifat
+spesifik. \emph{Jika peran penilaian dipisahkan dari model generatif dan
+diserahkan kepada classifier terkalibrasi, apakah akurasi gate tetap
+setara dengan LLM judge, apakah nilai keyakinannya cukup terkalibrasi
+untuk digunakan sebagai dasar ambang keputusan, dan berapa kebutuhan
+token, biaya, serta latensi dari pemisahan peran tersebut?} Pertanyaan ini berada di ruang
+lingkup Sistem Informasi karena menyangkut perancangan dan evaluasi
+komponen sistem berbasis kecerdasan artifisial, bukan sekadar pelatihan
+model. Hal yang diuji adalah rancangan kendali pada jalur tulis sebuah
+perangkat lunak agen beserta konsekuensinya terhadap biaya operasional dan
+mutu data yang disimpan sistem.
+
+\textbf{1.2 Rumusan Masalah}
+
+Berdasarkan latar belakang di atas, akar masalah penelitian ini dapat
+dipetakan pada diagram tulang ikan berikut.
+
+\includegraphics[width=5.70866in,height=2.88088in]{./media/image1.png}
+
+\emph{Gambar 1.1 Diagram tulang ikan akar masalah keputusan tulis memori
+agen}
+
+Rumusan masalah penelitian ini disusun dalam bentuk pertanyaan
+penelitian sebagai berikut.
+
+\begin{quote}
+1. Sejauh mana akurasi gate keputusan tulis yang dipisahkan dari model
+generatif berbeda dari LLM judge yang merangkap peran penilaian dan
+penulisan dalam menilai kelayakan penyimpanan memori sesi coding agent?
+
+2. Apakah classifier terlatih dan model keputusan terkalibrasi berbeda
+secara bermakna dalam akurasi gate, dan apakah penerapan kalibrasi
+post-hoc kepada classifier terlatih menutup perbedaan tersebut?
+
+3. Apakah nilai keyakinan masing-masing gate terkalibrasi pada tugas
+ini, dan apakah ambang yang dipilih berdasarkan hasil kalibrasi
+menghasilkan kinerja yang lebih baik daripada ambang tetap?
+
+4. Berapa jumlah token, biaya, dan latensi per 1.000 operasi tulis pada setiap
+kondisi, dan bagaimana bentuk kurva trade-off antara akurasi dan biaya
+pemisahan peran tersebut?
+
+5. Apakah mekanisme band ketidakpastian, yaitu penerimaan otomatis,
+penolakan otomatis, dan eskalasi ke LLM hanya pada rentang tengah, mengurangi
+panggilan model generatif tanpa penurunan bermakna pada mutu memori dan
+akurasi probe QA pada sesi lanjutan?
+\end{quote}
+
+\textbf{1.3 Tujuan Penelitian}
+
+Sejalan dengan rumusan masalah di atas, tujuan penelitian ini adalah
+sebagai berikut.
+
+\begin{quote}
+1. Memisahkan peran penilaian kelayakan dari peran penulisan entri pada
+jalur tulis memori ekosistem Pi dan mengimplementasikannya sebagai
+extension dengan satu pintu kendali.
+
+2. Menyusun dataset berlabel untuk menilai kelayakan penyimpanan memori sesi
+coding agent, lengkap dengan pedoman anotasi dan laporan kesepakatan
+antara annotator.
+
+3. Membandingkan lima pendekatan keputusan tulis, yaitu heuristik tanpa
+model, deteksi kebaruan berbasis embedding, classifier terlatih, model
+keputusan terkalibrasi, dan LLM judge, berdasarkan empat ukuran, yaitu akurasi gate,
+kalibrasi, biaya, dan latensi.
+
+4. Menguji apakah kalibrasi post-hoc menyetarakan classifier terlatih
+dengan model yang dilatih untuk terkalibrasi agar pengaruh akurasi dan
+kalibrasi terhadap hasil dapat dibedakan.
+
+5. Menguji secara empiris apakah band ketidakpastian berbasis keyakinan
+terkalibrasi layak dipakai sebagai strategi eskalasi selektif.
+\end{quote}
+
+\textbf{1.4 Manfaat Penelitian}
+
+\textbf{Manfaat teoritis.} Penelitian ini menguji klaim kalibrasi sebuah
+model keputusan terstruktur pada penilaian kelayakan memori, di luar
+domain aslinya yang berupa routing tugas. Hasilnya memperkaya pembahasan
+write-side control pada domain memori kerja coding agent yang belum
+banyak diteliti.
+
+\textbf{Manfaat praktis.} Penelitian ini memberikan mekanisme memori
+dengan keputusan tulis yang lebih murah dan lebih deterministik bagi
+ekosistem Pi, tanpa mengubah cara entri memori ditulis. Pengguna extension memori juga
+memperoleh gambaran biaya, token, dan latensi per 1.000 operasi tulis,
+yang dapat digunakan untuk memilih rancangan kendali sesuai anggaran
+pemakaian.
+
+\textbf{Manfaat metodologis.} Penelitian ini menyediakan protokol
+evaluasi admission pada sisi tulis untuk domain memori coding agent.
+Protokol ini memuat pengukuran kalibrasi dan kesepakatan antara annotator, tidak hanya
+akurasi dan penghematan biaya.
+
+\textbf{BAB II KAJIAN PUSTAKA DAN LANDASAN TEORI}
+
+\textbf{2.1 Kajian Pustaka dan Landasan Teori}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 2.{]}}
+
+\textbf{2.2 Pertanyaan Penelitian dan Hipotesis}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 2.{]}}
+
+\textbf{BAB III METODE PENELITIAN}
+
+\textbf{3.1 Metode Penelitian}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 3.{]}}
+
+\textbf{3.2 Teknik Pengumpulan Data dan Instrumen Penelitian}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 3.{]}}
+
+\textbf{BAB IV ANALISIS DATA DAN KESIMPULAN SEMENTARA}
+
+\textbf{4.1 Teknik Analisis Data Penelitian}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 4.{]}}
+
+\textbf{4.2 Kesimpulan Sementara dan Batasan Penelitian}
+
+\emph{{[}KOSONGKAN. Bagian ini diisi pada Tugas 4.{]}}
+
+\textbf{DAFTAR PUSTAKA}
+
+Chhikara, P., Khant, D., Aryan, S., Singh, T., \& Yadav, D. (2025).
+Mem0: Building production-ready AI agents with scalable long-term memory
+(arXiv:2504.19413). arXiv. https://arxiv.org/abs/2504.19413
+
+Chow, C. K. (1970). On optimum recognition error and reject tradeoff.
+IEEE Transactions on Information Theory, 16(1), 41--46.
+
+Command Code. (2026). Taste dan taste-1. Dokumentasi resmi Command Code.
+
+Dokumentasi paket pi-memory dan pi-hermes-memory. (2026). Arsitektur
+jalur tulis memori extension coding agent.
+
+Earendil Works. (2026). Pi coding agent. Dokumentasi extension (paket
+@earendil-works/pi-coding-agent versi 0.87.1).
+
+Guo, C., Pleiss, G., Sun, Y., \& Weinberger, K. Q. (2017). On
+calibration of modern neural networks. Dalam Proceedings of the 34th
+International Conference on Machine Learning (hlm. 1321--1330). PMLR.
+
+Maharana, A., Lee, D.-H., Tulyakov, S., Bansal, M., Barbieri, F., \&
+Fang, Y. (2024). Evaluating very long-term conversational memory of LLM
+agents (arXiv:2402.17753). arXiv. https://arxiv.org/abs/2402.17753
+
+MemBench: Towards more comprehensive evaluation on the memory of
+LLM-based agents. (2025). Dalam Findings of the Association for
+Computational Linguistics: ACL 2025.
+
+Evaluating memory in LLM agents via incremental multi-turn interactions
+(MemoryAgentBench). (2026). Dalam International Conference on Learning
+Representations (ICLR).
+
+Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., \&
+Gonzalez, J. E. (2023). MemGPT: Towards LLMs as operating systems
+(arXiv:2310.08560). arXiv. https://arxiv.org/abs/2310.08560
+
+TIMPS Research. (2026). Write-time trust gating for LLM memory systems.
+
+TypeSafe AI. (2026). System One Models dan Jev. Dokumentasi resmi,
+termasuk batasan kalibrasi dan anjuran pin versi model.
+
+Wang, S., Brahma, D., \& Henao, R. (2026). SAGE: A novelty gate for
+efficient memory evolution in agentic LLMs (arXiv:2605.30711). arXiv.
+https://arxiv.org/abs/2605.30711
+
+Wu, D., Ji, Z., Kawatkar, A., Kwan, B., Gu, J.-C., Peng, N., \& Chang,
+K.-W. (2026). LongMemEval-V2: Evaluating long-term agent memory toward
+experienced colleagues (arXiv:2605.12493). arXiv.
+https://arxiv.org/abs/2605.12493
+
+Wu, D., Wang, H., Yu, W., Zhang, Y., Chang, K.-W., \& Yu, D. (2025).
+LongMemEval: Benchmarking chat assistants on long-term interactive
+memory. Dalam International Conference on Learning Representations
+(ICLR).
+
+Xu, W., Liang, Z., Mei, K., Gao, H., Tan, J., \& Zhang, Y. (2025).
+A-MEM: Agentic memory for LLM agents (arXiv:2502.12110). arXiv.
+https://arxiv.org/abs/2502.12110
+
+Zhang, Y., \& Li, S. (2026). ConsistencyGate: Preventing memory
+contamination in LLM agents via self-consistency admission control
+(arXiv:2607.22962). arXiv. https://arxiv.org/abs/2607.22962
+
+\end{document}
