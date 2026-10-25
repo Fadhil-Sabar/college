@@ -1,0 +1,386 @@
+% Tugas 3 STSI4310 Metodologi Penelitian
+% Kompilasi: pdflatex Tugas3.tex (jalankan dua kali agar nomor halaman daftar isi terisi)
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=4cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx} % Times
+\usepackage[protrusion=true,expansion=true]{microtype} % kurangi jarak antarkata yang renggang
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{array,tabularx,booktabs}
+\usepackage{url}
+\usepackage[hidelinks,unicode]{hyperref}
+\urlstyle{same}
+
+% Spasi 1,5, paragraf menjorok, tanpa jarak antarparagraf
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% Tanpa pemenggalan kata: pola pemenggalan bawaan berbahasa Inggris
+% menghasilkan pemenggalan yang salah untuk bahasa Indonesia.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\emergencystretch}{3em}
+
+% Penanda istilah asing (dicetak miring secara konsisten)
+\newcommand{\asing}[1]{\textit{#1}}
+\newcommand{\pim}{\textit{pi-memory}}
+\newcommand{\phm}{\textit{pi-hermes-memory}}
+
+% Judul bertingkat: BAB (tengah), subbab (x.y), sub-subbab (x.y.z)
+\newcommand{\bab}[3]{%
+  \clearpage\phantomsection\label{#3}%
+  \begin{center}\large\bfseries BAB #1\\[0.2em] #2\end{center}\vspace{0.8em}}
+\newcommand{\subbab}[2]{%
+  \par\vspace{0.8em}\phantomsection\label{#2}%
+  \noindent\textbf{#1}\par\nopagebreak\vspace{0.3em}}
+\newcommand{\subsubbab}[2]{%
+  \par\vspace{0.5em}\phantomsection\label{#2}%
+  \noindent\textbf{#1}\par\nopagebreak\vspace{0.2em}}
+
+% Entri daftar isi: tingkat 0 (bab), 1 (subbab), 2 (sub-subbab)
+\newcommand{\tocentry}[3]{%
+  \ifcase#1\relax
+    \vspace{0.5em}\noindent\textbf{#2}\dotfill\textbf{\pageref{#3}}\par
+  \or
+    \noindent\hspace*{1.25cm}#2\dotfill\pageref{#3}\par
+  \or
+    \noindent\hspace*{2.25cm}#2\dotfill\pageref{#3}\par
+  \fi}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% HALAMAN COVER (sesuai Lampiran Panduan Penyusunan Proposal STSI4310)
+% ------------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\begin{singlespace}
+{\large\bfseries Tugas 3}\par
+\vspace{0.4em}
+{\large\bfseries STSI4310 -- Metodologi Penelitian}\par
+
+\vfill
+
+{\large\bfseries Akurasi dan Efisiensi Penyimpanan Memori Agen Pi\\
+melalui Evaluasi Komparatif\\
+Gate Klasifikasi Terkalibrasi}\par
+
+\vfill
+
+\includegraphics[width=5.2cm]{media/logo-universitas-terbuka.png}\par
+
+\vfill
+
+{\large\bfseries Fadhil Andriawan - 053497355}\par
+
+\vfill
+
+{\large\bfseries Program Studi Sistem Informasi}\par
+\vspace{0.3em}
+{\large\bfseries Fakultas Sains dan Teknologi}\par
+\vspace{0.3em}
+{\large\bfseries Universitas Terbuka}\par
+\vspace{0.3em}
+{\large\bfseries 2026}\par
+\end{singlespace}
+\end{titlepage}
+
+% ------------------------------------------------------------------
+% DAFTAR ISI
+% ------------------------------------------------------------------
+\pagenumbering{roman}
+\phantomsection\label{sec:daftar-isi}
+\begin{center}\large\bfseries DAFTAR ISI\end{center}
+\vspace{0.8em}
+\begin{singlespace}
+\tocentry{0}{DAFTAR ISI}{sec:daftar-isi}
+\tocentry{0}{BAB I PENDAHULUAN}{sec:bab1}
+\tocentry{1}{1.1 Latar Belakang Masalah}{sec:1.1}
+\tocentry{1}{1.2 Rumusan Masalah}{sec:1.2}
+\tocentry{1}{1.3 Tujuan dan Manfaat Penelitian}{sec:1.3}
+\tocentry{2}{1.3.1 Tujuan Penelitian}{sec:1.3.1}
+\tocentry{2}{1.3.2 Manfaat Penelitian}{sec:1.3.2}
+\tocentry{0}{BAB II KAJIAN PUSTAKA DAN LANDASAN TEORI}{sec:bab2}
+\tocentry{1}{2.1 Kajian Pustaka dan Landasan Teori}{sec:2.1}
+\tocentry{2}{2.1.1 Memori Lintas Sesi pada \asing{Coding Agent}}{sec:2.1.1}
+\tocentry{2}{2.1.2 Penilaian Kelayakan dan Kendali Jalur Tulis Memori}{sec:2.1.2}
+\tocentry{2}{2.1.3 Klasifikasi Kelayakan Penyimpanan}{sec:2.1.3}
+\tocentry{2}{2.1.4 Kalibrasi Probabilitas \asing{Gate}}{sec:2.1.4}
+\tocentry{2}{2.1.5 \asing{Band} Ketidakpastian dan Pemeriksaan LLM}{sec:2.1.5}
+\tocentry{2}{2.1.6 Evaluasi Efisiensi dan Mutu Memori}{sec:2.1.6}
+\tocentry{2}{2.1.7 Posisi Penelitian}{sec:2.1.7}
+\tocentry{1}{2.2 Pertanyaan Penelitian dan Hipotesis}{sec:2.2}
+\tocentry{0}{BAB III METODE PENELITIAN}{sec:bab3}
+\tocentry{1}{3.1 Metode Penelitian}{sec:3.1}
+\tocentry{2}{3.1.1 Pendekatan dan Jenis Penelitian}{sec:3.1.1}
+\tocentry{2}{3.1.2 Objek, Populasi, dan Sampel Penelitian}{sec:3.1.2}
+\tocentry{2}{3.1.3 Variabel Penelitian}{sec:3.1.3}
+\tocentry{2}{3.1.4 Desain dan Prosedur Eksperimen}{sec:3.1.4}
+\tocentry{1}{3.2 Teknik Pengumpulan Data dan Instrumen Penelitian}{sec:3.2}
+\tocentry{2}{3.2.1 Teknik Pengumpulan Data}{sec:3.2.1}
+\tocentry{2}{3.2.2 Instrumen Penelitian}{sec:3.2.2}
+\tocentry{2}{3.2.3 Validitas dan Reliabilitas Instrumen}{sec:3.2.3}
+\tocentry{0}{BAB IV ANALISIS DATA DAN KESIMPULAN SEMENTARA}{sec:bab4}
+\tocentry{1}{4.1 Teknik Analisis Data Penelitian}{sec:4.1}
+\tocentry{1}{4.2 Kesimpulan Sementara dan Batasan Penelitian}{sec:4.2}
+\tocentry{0}{DAFTAR PUSTAKA}{sec:daftar-pustaka}
+\end{singlespace}
+
+\clearpage
+\pagenumbering{arabic}
+
+% ------------------------------------------------------------------
+% BAB I
+% ------------------------------------------------------------------
+\bab{I}{PENDAHULUAN}{sec:bab1}
+
+\subbab{1.1 Latar Belakang Masalah}{sec:1.1}
+
+\asing{Coding agent} seperti Pi bekerja dalam sesi. Ketika sesi berakhir, konteks seperti preferensi pengguna, konvensi repositori, keputusan arsitektur, kegagalan \asing{tool}, dan pekerjaan yang belum selesai tidak selalu tersedia pada sesi berikutnya. Akibatnya, pengguna perlu menjelaskan kembali informasi yang sama dan agen berpotensi mengulang kesalahan sebelumnya. \asing{Extension} \pim{} dan \phm{} menyediakan memori lintas sesi untuk membantu mengatasi masalah tersebut (chandra447, 2026; jayzeng, 2026).
+
+\pim{} menggunakan berkas \asing{markdown}, log harian, \asing{scratchpad}, dan pencarian semantik opsional. \asing{Extension} ini menyediakan \asing{tool} \texttt{memory\_write} untuk menulis entri memori (jayzeng, 2026). Sementara itu, \phm{} menyediakan memori berkategori, pencarian SQLite FTS5, pemindaian rahasia, dan \asing{skills} prosedural. \asing{Extension} ini juga menggunakan model generatif untuk meninjau percakapan dan menghasilkan operasi pembaruan memori (chandra447, 2026). Penelitian ini berfokus pada keputusan tentang informasi yang layak disimpan sebelum memori ditulis.
+
+Dokumentasi \phm{} menyebutkan bahwa \asing{review} latar belakang secara bawaan dilakukan setiap 10 \asing{turn} atau 15 \asing{tool call}, dengan kedua penghitung direset setelah \asing{review}. \asing{Review} tersebut menggunakan panggilan model generatif untuk memeriksa percakapan dan menyusun memori (chandra447, 2026). Ketentuan ini menunjukkan bahwa proses penilaian dapat berulang selama sesi berlangsung. Besaran token, biaya, dan latensi proses tersebut tetap perlu diukur karena bergantung pada konfigurasi dan panjang konteks yang dinilai.
+
+Penyatuan penilaian kelayakan dan penulisan entri menimbulkan persoalan efisiensi serta keandalan keputusan. Penilaian melalui model generatif membutuhkan token konteks, meskipun kandidat informasi akhirnya ditolak. Jika model menggunakan \asing{sampling}, keputusan untuk masukan yang sama juga dapat berbeda. Konsistensi keputusan dan kalibrasi perlu dinilai secara terpisah. Konsistensi berkaitan dengan kestabilan keputusan pada pengulangan, sedangkan kalibrasi berkaitan dengan kesesuaian nilai keyakinan dan proporsi keputusan yang benar (Guo et al., 2017). Kalibrasi tidak otomatis menjamin keputusan yang selalu sama.
+
+Command Code menjadi contoh pemisahan penilaian dan penulisan dalam pengelolaan preferensi pengguna. Menurut dokumentasinya, model neuro-simbolik menilai sinyal preferensi, menentukan kategori dan tingkat keyakinan, serta menandai konflik. Model generatif digunakan untuk membaca sinyal dan menulis hasilnya sebagai \asing{markdown} (Command Code, 2026). Rancangan ini menunjukkan bahwa kedua peran dapat dijalankan oleh komponen yang berbeda. Penghematan biaya dan mutu keputusan pada memori sesi \asing{coding agent} masih perlu diuji.
+
+Penelitian memori agen membahas \asing{write-side control}, yaitu kendali yang menentukan informasi yang diterima sebelum masuk ke memori. Komponen yang menjalankan keputusan ini disebut \asing{gate}. Penelitian tentang kebaruan informasi memisahkan kandidat yang jelas baru, kandidat yang berulang, dan kandidat ambigu yang memerlukan pemeriksaan model generatif (Wang et al., 2026). Penelitian tersebut menunjukkan bahwa keputusan penyimpanan dapat dievaluasi sebagai komponen tersendiri.
+
+Penelitian ini berfokus pada tiga kebutuhan evaluasi dalam konteks \asing{coding agent}. Pertama, kesesuaian data. Maharana et al. (2024) menggunakan percakapan jangka panjang dengan rata-rata 300 \asing{turn} dan sekitar 9.000 token per percakapan, yang mencakup hingga 35 sesi. Data tersebut menunjukkan perbedaan konteks dengan sesi pemrograman yang memuat keputusan teknis, konvensi repositori, kegagalan \asing{tool}, dan koreksi pengguna. Karena itu, penelitian ini memerlukan data yang mewakili kandidat memori dari sesi \asing{coding agent}.
+
+Kedua, keputusan menerima atau menolak kandidat memori perlu dinilai sebagai tugas klasifikasi tersendiri. Evaluasi ini membutuhkan data berlabel, pedoman anotasi, dan pemeriksaan konsistensi pelabelan agar dasar penilaian kelayakan informasi dapat diperiksa. Ketiga, nilai keyakinan \asing{gate} perlu diuji sebelum digunakan sebagai dasar ambang keputusan. Guo et al. (2017) menunjukkan bahwa jaringan saraf modern dapat memiliki kalibrasi yang buruk dan kalibrasi \asing{post-hoc} seperti \asing{temperature scaling} dapat memperbaiki kalibrasi prediksi. Karena itu, kelayakan penyimpanan memori \asing{coding agent} perlu diuji secara khusus.
+
+Berdasarkan permasalahan tersebut, penelitian ini menguji pemisahan penilaian kelayakan dari penulisan memori pada \asing{coding agent} Pi. Penelitian ini membandingkan \asing{gate} klasifikasi terkalibrasi dengan mekanisme penilaian kelayakan penyimpanan pada \pim{} dan \phm{}. Evaluasi mencakup akurasi keputusan, penggunaan token, biaya, dan latensi, serta kalibrasi nilai keyakinan \asing{gate}.
+
+Penelitian ini juga menguji \asing{band} ketidakpastian, yaitu rentang probabilitas kelayakan penyimpanan yang memerlukan pemeriksaan LLM. Kandidat memori di luar rentang tersebut diputuskan secara otomatis oleh \asing{gate}. Evaluasi menilai pengurangan panggilan LLM dan mutu memori. Model generatif tetap digunakan untuk menulis entri yang diterima.
+
+Penelitian ini berada dalam ruang lingkup Sistem Informasi karena membahas perancangan dan evaluasi komponen sistem berbasis kecerdasan artifisial, khususnya kendali pada jalur tulis memori agen dan pengaruhnya terhadap biaya operasional serta mutu informasi yang disimpan.
+
+\subbab{1.2 Rumusan Masalah}{sec:1.2}
+
+Rumusan masalah penelitian ini disusun dalam bentuk pertanyaan penelitian sebagai berikut.
+\begin{enumerate}[leftmargin=1.25cm]
+\item Bagaimana akurasi keputusan \asing{gate} klasifikasi terkalibrasi dibandingkan dengan mekanisme penyimpanan pada \pim{} dan \phm{}?
+\item Apakah probabilitas yang dihasilkan \asing{gate} terkalibrasi dan dapat digunakan untuk menentukan keputusan?
+\item Bagaimana perbandingan penggunaan token, biaya, dan latensi per operasi tulis antara mekanisme yang diusulkan, \pim{}, dan \phm{}?
+\item Apakah \asing{band} ketidakpastian mengurangi panggilan LLM dengan tetap menjaga mutu memori dan akurasi jawaban pada sesi lanjutan?
+\end{enumerate}
+
+\subbab{1.3 Tujuan dan Manfaat Penelitian}{sec:1.3}
+
+\subsubbab{1.3.1 Tujuan Penelitian}{sec:1.3.1}
+
+Penelitian ini bertujuan mengimplementasikan \asing{gate} klasifikasi terkalibrasi pada jalur tulis memori Pi dengan memisahkan penilaian kelayakan dan penulisan entri. Tujuan evaluasinya adalah sebagai berikut.
+\begin{enumerate}[leftmargin=1.25cm]
+\item Membandingkan akurasi keputusan \asing{gate} dengan mekanisme penyimpanan pada \pim{} dan \phm{} menggunakan \asing{dataset} berlabel dari sesi \asing{coding agent}.
+\item Menilai kalibrasi probabilitas \asing{gate} dan kelayakannya sebagai dasar penentuan ambang keputusan.
+\item Membandingkan penggunaan token, biaya, dan latensi per operasi tulis antara mekanisme yang diusulkan, \pim{}, dan \phm{}.
+\item Menguji pengaruh \asing{band} ketidakpastian terhadap jumlah panggilan LLM, mutu memori, dan akurasi jawaban pada sesi lanjutan.
+\end{enumerate}
+
+\subsubbab{1.3.2 Manfaat Penelitian}{sec:1.3.2}
+
+\textbf{Manfaat teoretis.} Penelitian ini menambah pemahaman tentang penerapan \asing{gate} klasifikasi terkalibrasi dalam menilai kelayakan penyimpanan memori sesi \asing{coding agent}.
+
+\textbf{Manfaat praktis.} Hasil penelitian dapat membantu pengguna ekosistem Pi memilih mekanisme penyimpanan memori berdasarkan akurasi keputusan, penggunaan token, biaya, dan latensi per operasi tulis.
+
+\textbf{Manfaat metodologis.} Penelitian ini menyediakan protokol evaluasi \asing{gate} memori yang mencakup data berlabel, pemeriksaan konsistensi pelabelan, kalibrasi, dan pengujian mutu memori pada sesi lanjutan.
+
+% ------------------------------------------------------------------
+% BAB II
+% ------------------------------------------------------------------
+\bab{II}{KAJIAN PUSTAKA DAN LANDASAN TEORI}{sec:bab2}
+
+\subbab{2.1 Kajian Pustaka dan Landasan Teori}{sec:2.1}
+
+\subsubbab{2.1.1 Memori Lintas Sesi pada \asing{Coding Agent}}{sec:2.1.1}
+
+Memori lintas sesi menyimpan informasi yang dapat membantu agen pada pekerjaan berikutnya, seperti preferensi pengguna, konvensi repositori, keputusan arsitektur, dan pelajaran dari kegagalan \asing{tool}. Dokumentasi \pim{} menjelaskan penyimpanan melalui berkas \asing{markdown}, log harian, \asing{scratchpad}, serta \asing{tool} \texttt{memory\_write} (jayzeng, 2026). Sementara itu, \phm{} menggunakan memori berkategori dan \asing{review} percakapan untuk menghasilkan pembaruan memori (chandra447, 2026).
+
+Penelitian ini berfokus pada memori jangka panjang. Informasi dinilai layak disimpan jika mempunyai dasar dalam percakapan atau hasil pekerjaan, sesuai dengan cakupan pengguna atau proyek, dan berguna untuk sesi berikutnya. Informasi sementara tetap dapat digunakan dalam konteks aktif atau log.
+
+\subsubbab{2.1.2 Penilaian Kelayakan dan Kendali Jalur Tulis Memori}{sec:2.1.2}
+
+Kendali jalur tulis memori atau \asing{write-side control} menentukan tindakan terhadap informasi sebelum disimpan. SAGE menilai apakah informasi sudah tercakup dalam memori melalui estimator kepadatan berbasis distribusi von Mises--Fisher pada \asing{embedding}. Informasi yang jelas belum tercakup ditambahkan, informasi berulang diabaikan, dan kasus yang belum jelas diperiksa oleh LLM (Wang et al., 2026).
+
+Informasi yang belum tersimpan belum tentu berguna untuk jangka panjang. Koreksi terhadap keputusan lama juga dapat tetap penting meskipun teksnya mirip dengan memori sebelumnya. Karena itu, penilaian kelayakan mempertimbangkan kegunaan informasi dan konteksnya. Command Code Taste juga memisahkan penilaian preferensi dari penulisan hasil oleh LLM, tetapi penghematan pada Pi tetap perlu diuji (Command Code, 2026).
+
+\subsubbab{2.1.3 Klasifikasi Kelayakan Penyimpanan}{sec:2.1.3}
+
+Kelayakan penyimpanan dinilai melalui klasifikasi biner. Kelas positif menunjukkan informasi yang layak masuk ke memori jangka panjang, sedangkan kelas negatif menunjukkan informasi yang tidak perlu disimpan di sana. Label acuan disusun melalui pedoman anotasi, dan konsistensi pelabelan diperiksa sebelum label digunakan. Ketepatan \asing{gate} diukur menggunakan akurasi, \asing{precision}, \asing{recall}, dan F1 agar kesalahan menerima maupun menolak informasi dapat diketahui.
+
+\subsubbab{2.1.4 Kalibrasi Probabilitas \asing{Gate}}{sec:2.1.4}
+
+Kalibrasi menunjukkan kesesuaian probabilitas prediksi dengan hasil yang diamati. Model dengan akurasi tinggi belum tentu menghasilkan probabilitas yang terkalibrasi (Guo et al., 2017). Karena itu, ketepatan kelas dan mutu probabilitas dinilai secara terpisah.
+
+Guo et al. (2017) menggunakan \asing{reliability diagram}, \asing{Expected Calibration Error} (ECE), dan \asing{negative log-likelihood} (NLL) untuk mengevaluasi kalibrasi. ECE mengukur ketidaksesuaian probabilitas dengan hasil pengamatan. Salah satu metode yang dibahas adalah \asing{temperature scaling}, dengan parameter yang disesuaikan menggunakan data validasi. Metode ini mengubah probabilitas tanpa mengubah kelas yang dipilih, sehingga perbaikan kalibrasi tidak otomatis meningkatkan akurasi klasifikasi.
+
+\subsubbab{2.1.5 \asing{Band} Ketidakpastian dan Pemeriksaan LLM}{sec:2.1.5}
+
+\asing{Band} ketidakpastian digunakan untuk meneruskan kandidat ke LLM ketika keluaran \asing{gate} belum cukup meyakinkan. SAGE mengalihkan kasus yang belum jelas berdasarkan penilaian apakah informasi sudah tercakup dalam memori (Wang et al., 2026). Dalam penelitian ini, pengalihan direncanakan berdasarkan probabilitas kelayakan penyimpanan. Penentuan ambang dan rentangnya dijelaskan pada bagian metode penelitian. Pengurangan panggilan LLM dinilai bersama kesalahan keputusan dan mutu memori.
+
+\subsubbab{2.1.6 Evaluasi Efisiensi dan Mutu Memori}{sec:2.1.6}
+
+Efisiensi dinilai melalui penggunaan token, biaya, dan latensi. Pengukuran mencakup ekstraksi kandidat, komputasi \asing{gate}, pemeriksaan LLM, serta penulisan entri. Biaya untuk kandidat yang akhirnya ditolak tetap dihitung. Perbandingan menggunakan definisi operasi tulis yang sama dan mencatat perbedaan konfigurasi kedua \asing{baseline}, termasuk \asing{review} berkala pada \phm{} (jayzeng, 2026; chandra447, 2026).
+
+Maharana et al. (2024) mengevaluasi penggunaan memori percakapan melalui beberapa tugas, termasuk \asing{question answering}. Dalam penelitian ini, mutu memori diuji melalui ketepatan jawaban sesi lanjutan tentang keputusan teknis, konvensi repositori, dan koreksi pengguna yang tersedia dalam histori.
+
+\subsubbab{2.1.7 Posisi Penelitian}{sec:2.1.7}
+
+SAGE telah membahas pemisahan sebagian keputusan penyimpanan dari pemeriksaan LLM (Wang et al., 2026). Penelitian ini berfokus pada evaluasi komparatif \asing{gate} klasifikasi terkalibrasi pada \asing{coding agent} Pi, dengan menilai ketepatan keputusan, mutu probabilitas, efisiensi, dan penggunaan memori pada sesi lanjutan.
+
+\subbab{2.2 Pertanyaan Penelitian dan Hipotesis}{sec:2.2}
+
+Pertanyaan penelitian mengikuti rumusan masalah pada BAB I. Hipotesis berikut merupakan dugaan yang akan diuji menggunakan data yang tidak digunakan untuk pelatihan atau penyesuaian kalibrasi.
+
+\textbf{Pertanyaan penelitian 1.} Bagaimana akurasi keputusan \asing{gate} klasifikasi terkalibrasi dibandingkan dengan mekanisme penyimpanan pada \pim{} dan \phm{}?
+
+\textbf{Hipotesis 1.} Terdapat perbedaan ketepatan keputusan kelayakan penyimpanan antara \asing{gate} klasifikasi terkalibrasi dan kedua \asing{baseline}. Perbandingan menggunakan label acuan yang sama melalui akurasi, \asing{precision}, \asing{recall}, dan F1.
+
+\textbf{Pertanyaan penelitian 2.} Apakah probabilitas yang dihasilkan \asing{gate} terkalibrasi dan dapat digunakan untuk menentukan keputusan?
+
+\textbf{Hipotesis 2.} Kalibrasi \asing{post-hoc} membuat probabilitas \asing{gate} lebih sesuai dengan hasil pada data acuan, ditunjukkan oleh penurunan ECE dibandingkan sebelum kalibrasi. Kegunaan probabilitas tersebut untuk menentukan keputusan otomatis dinilai bersama tingkat kesalahan \asing{gate}.
+
+\textbf{Pertanyaan penelitian 3.} Bagaimana perbandingan penggunaan token, biaya, dan latensi per operasi tulis antara mekanisme yang diusulkan, \pim{}, dan \phm{}?
+
+\textbf{Hipotesis 3.} \asing{Gate} dengan pemeriksaan LLM selektif menurunkan penggunaan token LLM dan biaya operasional per operasi tulis dibandingkan \asing{baseline}, setelah memperhitungkan komputasi tambahan \asing{gate}. Latensi dinilai tersendiri karena pengurangan panggilan LLM belum tentu mempercepat seluruh operasi.
+
+\textbf{Pertanyaan penelitian 4.} Apakah \asing{band} ketidakpastian mengurangi panggilan LLM dengan tetap menjaga mutu memori dan akurasi jawaban pada sesi lanjutan?
+
+\textbf{Hipotesis 4.} \asing{Band} ketidakpastian mengurangi panggilan LLM untuk penilaian kelayakan, sementara mutu memori dan akurasi jawaban sesi lanjutan tidak menurun melebihi batas yang ditetapkan sebelum pengujian. Dengan demikian, penghematan dinilai bersama kemampuan agen menggunakan informasi yang diperlukan.
+
+% ------------------------------------------------------------------
+% BAB III
+% ------------------------------------------------------------------
+\bab{III}{METODE PENELITIAN}{sec:bab3}
+
+\subbab{3.1 Metode Penelitian}{sec:3.1}
+
+\subsubbab{3.1.1 Pendekatan dan Jenis Penelitian}{sec:3.1.1}
+
+Penelitian ini akan menggunakan pendekatan kuantitatif dengan metode eksperimen komparatif. Pendekatan kuantitatif dipilih karena seluruh pertanyaan penelitian menanyakan besaran yang dapat diukur, yaitu ketepatan keputusan, kalibrasi, penggunaan token, biaya, latensi, dan akurasi jawaban pada sesi lanjutan. Metode eksperimen dipilih karena mekanisme penyimpanan dapat dikendalikan sementara kondisi lain dibuat sama, sehingga perbedaan hasil dapat dikaitkan dengan mekanisme yang digunakan. Survei dan studi kasus tidak dipilih karena penelitian ini mengukur perilaku sistem pada data yang sama.
+
+\subsubbab{3.1.2 Objek, Populasi, dan Sampel Penelitian}{sec:3.1.2}
+
+Objek penelitian adalah mekanisme penilaian kelayakan informasi sebelum disimpan ke memori jangka panjang \asing{coding agent} Pi. Unit analisisnya adalah satu kandidat memori beserta konteks percakapan dan isi memori yang tersedia saat kandidat tersebut muncul.
+
+Populasi penelitian adalah seluruh kandidat memori dari sesi \asing{coding agent} Pi milik peneliti selama periode pengumpulan data. Sampel diambil dari sesi yang memuat pekerjaan pemrograman nyata, seperti perbaikan kode, perubahan konfigurasi, dan diskusi keputusan teknis. Sampel dibagi per sesi menjadi data latih, data validasi, dan data uji, sehingga kandidat dari sesi yang sama tidak muncul pada kelompok yang berbeda.
+
+\subsubbab{3.1.3 Variabel Penelitian}{sec:3.1.3}
+
+Variabel bebas penelitian ini adalah mekanisme penilaian kelayakan penyimpanan, yaitu mekanisme bawaan \pim{}, mekanisme bawaan \phm{}, dan \asing{gate} klasifikasi terkalibrasi. Untuk pertanyaan penelitian keempat, lebar \asing{band} ketidakpastian juga diperlakukan sebagai variabel bebas. Variabel terikat meliputi ketepatan keputusan (akurasi, \asing{precision}, \asing{recall}, dan F1), mutu probabilitas \asing{gate} (ECE dan NLL) (Guo et al., 2017), efisiensi (jumlah panggilan LLM, token, biaya, dan latensi per operasi tulis), serta mutu memori (akurasi jawaban pada sesi lanjutan). Variabel kontrol meliputi model LLM dan versinya, instruksi penulisan entri, kondisi awal memori, dan perangkat keras yang digunakan.
+
+\subsubbab{3.1.4 Desain dan Prosedur Eksperimen}{sec:3.1.4}
+
+Desain eksperimen yang digunakan adalah perbandingan dalam subjek (\asing{within-subject}), yaitu setiap kandidat memori pada data uji diproses oleh ketiga mekanisme. Penelitian ini tidak menguji arsitektur memori agen secara keseluruhan seperti pada MemGPT atau A-MEM (Packer et al., 2023; Xu et al., 2025). Pengujian dibatasi pada tahap keputusan sebelum informasi ditulis ke memori. Prosedur eksperimen direncanakan sebagai berikut.
+\begin{enumerate}[leftmargin=1.25cm]
+\item Mengumpulkan rekaman sesi Pi, menyamarkan data pribadi, lalu mengekstraksi kandidat memori dengan aturan yang sama untuk ketiga mekanisme.
+\item Memberi label acuan berdasarkan pedoman anotasi, lalu membagi data per sesi menjadi data latih, validasi, dan uji.
+\item Melatih \asing{gate} pada data latih dan menyesuaikan kalibrasi dengan \asing{temperature scaling} pada data validasi (Guo et al., 2017).
+\item Menentukan ambang keputusan dan lebar \asing{band} ketidakpastian pada data validasi. Kandidat di dalam \asing{band} diteruskan ke LLM, mengikuti prinsip klasifikasi selektif yang menahan keputusan pada prediksi berkeyakinan rendah (Geifman \& El-Yaniv, 2017).
+\item Memutar ulang sesi data uji pada ketiga mekanisme dengan konfigurasi yang sama, lalu mencatat keputusan, jumlah panggilan LLM, token, biaya, dan latensi setiap kandidat. Pada \pim{} dan \phm{}, kandidat dianggap diterima apabila informasinya tertulis ke memori.
+\item Menjalankan sesi lanjutan berisi pertanyaan tentang keputusan teknis, konvensi repositori, dan koreksi pengguna, mengikuti kategori evaluasi memori jangka panjang pada Maharana et al. (2024) dan Wu et al. (2025), lalu mencatat ketepatan jawaban agen.
+\end{enumerate}
+
+Ambang, kalibrasi, dan lebar \asing{band} ditetapkan sebelum data uji digunakan.
+
+\subbab{3.2 Teknik Pengumpulan Data dan Instrumen Penelitian}{sec:3.2}
+
+\subsubbab{3.2.1 Teknik Pengumpulan Data}{sec:3.2.1}
+
+Data akan dikumpulkan melalui dokumentasi rekaman sesi, anotasi kandidat memori oleh peneliti, dan pencatatan otomatis (\asing{logging}) selama eksperimen. Nama, alamat surel, kredensial, dan data sensitif lain dalam rekaman dihapus atau disamarkan sebelum digunakan. Kesesuaian teknik dengan setiap variabel ditunjukkan pada Tabel 3.1.
+
+\begin{table}[h]
+\centering
+\captionsetup{labelformat=empty,font=small,skip=4pt}
+\caption{\textbf{Tabel 3.1} Kesesuaian variabel, teknik pengumpulan data, dan instrumen}
+\begin{singlespace}
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Variabel} & \textbf{Teknik pengumpulan data} & \textbf{Instrumen} \\
+\midrule
+Mekanisme penyimpanan (variabel bebas) & Konfigurasi eksperimen & Berkas konfigurasi dan catatan versi kode \\
+Ketepatan keputusan & Anotasi dan pencatatan otomatis & Pedoman anotasi, lembar pelabelan, log keputusan \\
+Mutu probabilitas \asing{gate} & Pencatatan otomatis & Skrip pengujian dan log probabilitas \\
+Efisiensi & Pencatatan otomatis & Log panggilan LLM, token, biaya, dan waktu proses \\
+Mutu memori & Dokumentasi dan pencatatan otomatis & Daftar pertanyaan dan jawaban acuan sesi lanjutan \\
+\bottomrule
+\end{tabularx}
+\end{singlespace}
+\end{table}
+
+\subsubbab{3.2.2 Instrumen Penelitian}{sec:3.2.2}
+
+Instrumen penelitian terdiri atas empat bagian.
+\begin{enumerate}[leftmargin=1.25cm]
+\item \textbf{Pedoman anotasi}, berisi definisi kelas ``layak disimpan'' dan ``tidak layak disimpan'' beserta contohnya. Preferensi pengguna yang relatif menetap, konvensi repositori, dan keputusan teknis yang masih berlaku termasuk layak disimpan. Informasi sementara, duplikasi, dan klaim tanpa dasar termasuk tidak layak disimpan. Koreksi terhadap memori lama diperlakukan sebagai informasi baru meskipun teksnya mirip.
+\item \textbf{Lembar pelabelan}, mencatat identitas kandidat, konteks singkat, label, dan alasan pemberian label.
+\item \textbf{Skrip pengujian dan pencatat log}, menjalankan ketiga mekanisme dengan konfigurasi yang sama dan mencatat keputusan, probabilitas \asing{gate}, panggilan LLM, token, biaya, serta waktu proses.
+\item \textbf{Daftar pertanyaan sesi lanjutan}, setiap pertanyaan dikaitkan dengan kandidat berlabel ``layak disimpan'' dan dilengkapi jawaban acuan.
+\end{enumerate}
+
+\subsubbab{3.2.3 Validitas dan Reliabilitas Instrumen}{sec:3.2.3}
+
+Validitas pedoman anotasi dijaga dengan menurunkan definisi kelas dari kriteria kelayakan pada subbab 2.1.1, yaitu informasi memiliki dasar dalam percakapan atau hasil pekerjaan, sesuai dengan cakupan pengguna atau proyek, dan berguna untuk sesi berikutnya. Pedoman diujicobakan pada sebagian kecil kandidat dan diperbaiki apabila terdapat definisi yang menimbulkan keraguan. Setiap pertanyaan sesi lanjutan disusun agar hanya dapat dijawab dengan benar apabila informasi terkait tersimpan di memori.
+
+Pelabelan dilakukan oleh satu penilai, yaitu peneliti. Karena itu, reliabilitas diperiksa melalui pelabelan ulang. Peneliti melabeli kembali sebagian kandidat setelah jeda waktu tanpa melihat label pertama, lalu kesepakatan kedua pelabelan dihitung dengan koefisien kappa Cohen (Cohen, 1960). Penggunaan satu penilai dicatat sebagai keterbatasan penelitian. Reliabilitas pengukuran efisiensi dijaga dengan mengulang pengukuran latensi pada konfigurasi yang sama serta mencatat versi model, instruksi, dan kode yang digunakan.
+
+% ------------------------------------------------------------------
+% BAB IV (dikosongkan sesuai ketentuan Tugas 3)
+% ------------------------------------------------------------------
+\bab{IV}{ANALISIS DATA DAN KESIMPULAN SEMENTARA}{sec:bab4}
+
+\subbab{4.1 Teknik Analisis Data Penelitian}{sec:4.1}
+
+\subbab{4.2 Kesimpulan Sementara dan Batasan Penelitian}{sec:4.2}
+
+% ------------------------------------------------------------------
+% DAFTAR PUSTAKA (APA Style edisi 7)
+% ------------------------------------------------------------------
+\clearpage
+\phantomsection\label{sec:daftar-pustaka}
+\begin{center}\large\bfseries DAFTAR PUSTAKA\end{center}
+\vspace{0.8em}
+
+\begin{singlespace}
+\raggedright
+\begin{list}{}{%
+  \setlength{\leftmargin}{1.25cm}%
+  \setlength{\itemindent}{-1.25cm}%
+  \setlength{\itemsep}{0.8\baselineskip}%
+  \setlength{\parsep}{0pt}%
+}
+\item chandra447. (2026). \textit{Pi Hermes Memory} [Dokumentasi perangkat lunak]. GitHub. Diakses pada 30 September 2026, dari \url{https://github.com/chandra447/pi-hermes-memory}
+
+\item Cohen, J. (1960). A coefficient of agreement for nominal scales. \textit{Educational and Psychological Measurement, 20}(1), 37--46. \url{https://doi.org/10.1177/001316446002000104}
+
+\item Command Code. (2026). \textit{Taste}. Command Code Docs. Diakses pada 30 September 2026, dari \url{https://commandcode.ai/docs/taste}
+
+\item Geifman, Y., \& El-Yaniv, R. (2017). Selective classification for deep neural networks. \textit{Advances in Neural Information Processing Systems, 30}. \url{https://arxiv.org/abs/1705.08500}
+
+\item Guo, C., Pleiss, G., Sun, Y., \& Weinberger, K. Q. (2017). On calibration of modern neural networks. Dalam D. Precup \& Y. W. Teh (Ed.), \textit{Proceedings of the 34th International Conference on Machine Learning} (Vol. 70, hlm. 1321--1330). PMLR. \url{https://proceedings.mlr.press/v70/guo17a.html}
+
+\item jayzeng. (2026). \textit{pi-memory} [Dokumentasi perangkat lunak]. GitHub. Diakses pada 30 September 2026, dari \url{https://github.com/jayzeng/pi-memory}
+
+\item Maharana, A., Lee, D.-H., Tulyakov, S., Bansal, M., Barbieri, F., \& Fang, Y. (2024). \textit{Evaluating very long-term conversational memory of LLM agents} (arXiv:2402.17753) [Preprint]. arXiv. \url{https://arxiv.org/abs/2402.17753}
+
+\item Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., \& Gonzalez, J. E. (2023). \textit{MemGPT: Towards LLMs as operating systems} (arXiv:2310.08560) [Preprint]. arXiv. \url{https://arxiv.org/abs/2310.08560}
+
+\item Wang, S., Brahma, D., \& Henao, R. (2026). \textit{SAGE: A novelty gate for efficient memory evolution in agentic LLMs} (arXiv:2605.30711) [Preprint]. arXiv. \url{https://arxiv.org/abs/2605.30711v2}
+
+\item Wu, D., Wang, H., Yu, W., Zhang, Y., Chang, K.-W., \& Yu, D. (2025). LongMemEval: Benchmarking chat assistants on long-term interactive memory. \textit{International Conference on Learning Representations (ICLR 2025)}. \url{https://arxiv.org/abs/2410.10813}
+
+\item Xu, W., Liang, Z., Mei, K., Gao, H., Tan, J., \& Zhang, Y. (2025). \textit{A-MEM: Agentic memory for LLM agents} (arXiv:2502.12110) [Preprint]. arXiv. \url{https://arxiv.org/abs/2502.12110}
+\end{list}
+\end{singlespace}
+
+\end{document}
