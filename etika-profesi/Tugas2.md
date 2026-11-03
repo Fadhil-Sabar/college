@@ -8,9 +8,9 @@ Tugas 2 Etika Profesi
 
 1. Jelaskan jenis pekerjaan yang direkomendasikan oleh SRIG-PS SEARCC (nilai maks 40)
 
-SEARCC atau South East Asia Regional Computer Consideration yang merupakan forum berisi anggota profesional TI dari beberapa negara. Grup yang aktif dibentuk oleh SEARCC adalah SRIG-PS atau Special Regional Interest Group on Profesional Standardisation, yang memiliki fungsi merumuskan standarisasi pekerjaan TI.
+SEARCC atau South East Asia Regional Computer Confederation merupakan forum berisi anggota profesional TI dari beberapa negara. Grup yang aktif dibentuk oleh SEARCC adalah SRIG-PS atau Special Regional Interest Group on Professional Standardisation, yang memiliki fungsi merumuskan standardisasi pekerjaan TI.
 
-Untuk jenis pekerjaan yang direkomendasi ada beberapa yaitu:
+Jenis pekerjaan yang direkomendasikan adalah sebagai berikut:
 1. Programmer, merupakan pekerjaan yang bertugas melakukan pemrograman komputer berdasarkan rancangan sistem yang telah dibuat. Programmer menerjemahkan rancangan tersebut ke dalam bahasa pemrograman agar bisa dijalankan oleh komputer. Contohnya ketika programmer membuat fitur pencatatan transaksi pada aplikasi penjualan berdasarkan kebutuhan dan desain sistem yang sudah ditentukan.
 
 2. Analis Sistem, bertugas menganalisis kebutuhan dan merancang sistem sebelum dilakukan implementasi atau pemrograman. Pekerjaan ini perlu pemahaman terhadap masalah yang dihadapi pengguna agar sistem yang dikembangkan sesuai dengan kebutuhan. Contohnya analis sistem mempelajari proses penjualan di sebuah toko, kemudian merancang alur pencatatan transaksi dan pengelolaan stok barang.
@@ -25,13 +25,9 @@ Untuk jenis pekerjaan yang direkomendasi ada beberapa yaitu:
 
 Karier di bidang teknologi informasi merupakan pekerjaan yang berkaitan dengan pengembangan, penerapan, pengelolaan, pemeliharaan, dan pengamanan teknologi. Bidang ini memiliki cakupan yang luas karena teknologi informasi digunakan dalam berbagai sektor, seperti pendidikan, pemerintahan, perbankan, kesehatan, perdagangan, dan industri. Beberapa contoh karier di bidang teknologi informasi adalah sebagai berikut.
 
-2. Karier di Bidang Teknologi Informasi
-
-Karier di bidang teknologi informasi mencakup pekerjaan yang berhubungan dengan pengembangan, pengelolaan, pemeliharaan, dan pengamanan teknologi. Beberapa pilihan karier di bidang TI adalah sebagai berikut.
-
 1. Perekayasa Perangkat Lunak (Software Engineer)
 
-Software engineer bertugas merancang dan mengembangkan perangkat lunak sesuai kebutuhan pengguna. Pekerjaannya berupa pengujian serta pemeliharaan perangkat lunak setelah digunakan. Profesi ini membutuhkan kemampuan pemrograman, analisis sistem, dan pemecahan masalah.
+Software engineer bertugas merancang dan mengembangkan perangkat lunak sesuai kebutuhan pengguna. Pekerjaannya juga mencakup pengujian serta pemeliharaan perangkat lunak setelah digunakan. Profesi ini membutuhkan kemampuan pemrograman, analisis sistem, dan pemecahan masalah.
 
 2. Programmer
 

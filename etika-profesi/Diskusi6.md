@@ -20,7 +20,7 @@ Pembajakan ini umumnya dilakukan oleh suatu institusi yang menjual produk softwa
 Pembajakan ini dilakukan oleh individu atau institusi yang memiliki satu lisensi, tetapi memasang software tersebut di beberapa komputer. Bedanya dengan under licensing, di sini satu lisensi disalin ke banyak perangkat. End user copying menjadi kasus pembajakan yang paling banyak terjadi di Indonesia. Salah satu contohnya adalah lisensi antivirus dipasang di semua komputer warnet.
 
 6. Internet Piracy
-Pembajakan ini memanfaatkan internet untuk menjual dan menyebarkan produk bajakan, seperti software, musik, film, dan buku, dengan tujuan mencari keuntungan. Contohnya seperti website yang membagikan software versi crack atau menjual serial number ilegal.
+Pembajakan ini memanfaatkan internet untuk menjual dan menyebarkan produk bajakan, seperti software, musik, film, dan buku, dengan tujuan mencari keuntungan. Contohnya adalah website yang membagikan software versi crack atau menjual serial number ilegal.
 
 Menurut saya, jenis yang paling dekat dengan kehidupan sehari-hari adalah end user copying dan internet piracy, karena keduanya bisa dilakukan siapa saja tanpa sadar sedang melanggar hak cipta. Sebagai mahasiswa TI, cara paling sederhana untuk menghindarinya adalah membeli lisensi sesuai jumlah perangkat yang dipakai, atau memilih software open source yang legal digunakan, seperti LibreOffice, GIMP, dan Linux.
 
