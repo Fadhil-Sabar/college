@@ -7,8 +7,8 @@ Saya akan menghitung menggunakan rumus berikut
 Dimana LQ = Location Quotient
 Xij = nilai PDRB sektor i di kabupaten atau kota j
 Xj = nilai PDRB total di kabupaten atau kota j
-Yi = nilai PDRB sektor i di daerah acuan lain
-Y = nilai PDRB total tenaga kerja di daerah acuan lain
+Yi = nilai PDRB sektor i di provinsi atau daerah acuan lain
+Yj = nilai PDRB total provinsi atau daerah acuan lain
 
 1. Sektor Pertanian, Kehutanan dan Perikanan
    LQ = 
@@ -19,6 +19,18 @@ Y = nilai PDRB total tenaga kerja di daerah acuan lain
   - hlm. 7.18: "Keterangan: LQ = indeks kuosien lokasi Xij = nilai PDRB sektor i di kabupaten atau kota j Xj = nilai PDRB total kabupaten atau kota j Yi = nilai PDRB sektor i di provinsi atau daerah acuan lain, misal wilayah pemba"
 
 ### Soal 2 — Klasifikasi Basis / Non-Basis
+
+| No  | Sektor                            | Nilai LQ | Klasifikasi |
+| --- | --------------------------------- | -------: | ----------- |
+| 1   | Pertanian, Kehutanan, & Perikanan |     1,50 | Basis       |
+| 2   | Pertambangan & Penggalian         |     0,45 | Non-Basis   |
+| 3   | Industri Pengolahan               |     1,00 | Basis*      |
+| 4   | Konstruksi                        |     1,29 | Basis       |
+| 5   | Perdagangan Besar & Eceran        |     1,19 | Basis       |
+| 6   | Jasa Pendidikan                   |     0,45 | Non-Basis   |
+
+Kriteria: LQ > 1 = Basis, LQ < 1 = Non-Basis.
+*LQ = 1 menurut BMP (hlm. 7.19) mendekati komoditas unggulan, dan beberapa penulis mengategorikannya sebagai unggulan, sehingga Industri Pengolahan dimasukkan ke Basis.
 
 - **M7**, KB2 Model Ekonomi, hlm. **7.19**
   - hlm. 7.19: "LQ &gt; 1 maka komoditas tersebut merupakan komoditas unggulan suatu wilayah. b. Jika LQ = 1 maka dikatakan suatu komoditas mendekati komoditas unggulan suatu wilayah. Beberapa penulis mengategorikan komoditas"
